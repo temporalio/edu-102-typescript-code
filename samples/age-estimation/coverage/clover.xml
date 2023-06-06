@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1685980120886" clover="3.2.0">
+  <project timestamp="1685980120886" name="All files">
+    <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0" elements="6" coveredelements="3" complexity="0" loc="5" ncloc="5" packages="1" files="1" classes="1"/>
+    <file name="workflows.ts" path="/Users/brianhogan/dev/edu-102-ts-code/samples/age-estimation/src/workflows.ts">
+      <metrics statements="5" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="11" count="0" type="stmt"/>
+      <line num="12" count="0" type="stmt"/>
+    </file>
+  </project>
+</coverage>
