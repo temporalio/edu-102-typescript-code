@@ -22,10 +22,10 @@ export async function translateTerm(input: TranslationActivityInput): Promise<Tr
   } catch (error: any) {
     if(error.response) {
       context.log.error("Translation request failed:", {"status": error.response.status, "data": error.response.data});
-      throw error;
+      throw new Error(`HTTP Error ${error.response.status}: ${error.response.data}`);
     } else if (error.request) {
       context.log.error("Translation request failed:", {"request": error.request});
-      throw error;
+      throw new Error(`Request error:  ${error.request}`);
     }
   }
 
