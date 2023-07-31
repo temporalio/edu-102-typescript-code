@@ -1,3 +1,4 @@
+/*
 import { TestWorkflowEnvironment } from '@temporalio/testing';
 import { before, describe, it } from 'mocha';
 import { Worker, Runtime, DefaultLogger, LogEntry } from '@temporalio/worker';
@@ -48,9 +49,16 @@ describe('SayHelloGoodbye workflow', () => {
           workflowId: 'test',
           taskQueue: 'test',
         });
-      assert.equal(result.HelloMessage, "Bonjour, Pierre");
-      assert.equal(result.GoodbyeMessage, "Au revoir, Pierre");
+
+        // TODO: Assert that Workflow Execution completed
+
+        // TODO: Assert that the HelloMessage field in the
+        //       result is: Bonjour, Pierre
+
+        // TODO: Assert that the GoodbyeMessage field in the
+        //       result is: Au revoir, Pierre
     });
 
   });
 });
+*/
