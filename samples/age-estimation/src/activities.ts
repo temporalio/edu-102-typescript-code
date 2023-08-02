@@ -17,6 +17,4 @@ export async function estimateAge(name: string): Promise<number> {
   const parsedResponse: EstimatorResponse = responseBody as EstimatorResponse;
 
   return parsedResponse.age;
-
-
 }

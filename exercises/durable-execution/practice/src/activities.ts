@@ -15,12 +15,11 @@ export async function translateTerm(input: TranslationActivityInput): Promise<Tr
   const term = encodeURIComponent(input.Term);
 
   const url = `http://localhost:9998/translate?lang=${lang}&term=${term}`;
-    let content = ""
+  let content = ""
 
   try {
     const response = await axios.get(url)
     content = response.data;
-
 
 	// TODO  use the Debug level to log the successful translation and include the
 	//       translated term as a name-value pair

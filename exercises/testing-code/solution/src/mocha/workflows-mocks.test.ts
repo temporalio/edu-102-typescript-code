@@ -54,6 +54,7 @@ describe('SayHelloGoodbye workflow', () => {
     }
 
     const { client, nativeConnection } = testEnv;
+
     const translateTermMock = sinon.stub();
     translateTermMock.withArgs(helloInput).resolves(helloOutput);
     translateTermMock.withArgs(goodbyeInput).resolves(goodbyeOutput);

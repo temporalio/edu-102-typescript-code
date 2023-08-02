@@ -10,7 +10,7 @@ const { translateTerm } = proxyActivities<typeof activities>({
 /** A workflow that simply calls an activity */
 export async function sayHelloGoodbyeWorkflow(input: TranslationWorkflowInput): Promise<TranslationWorkflowOutput> {
 
-	// TODO Create your Activity input object and populate it with the last
+	// TODO Create your Activity input object and populate it with the
 	//      two fields from the translateTerm call below
 
 	// TODO Replace "string" below with your Activity output type and use

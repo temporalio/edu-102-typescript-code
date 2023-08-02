@@ -12,7 +12,6 @@ Make your changes to the code in the `practice` subdirectory (look for
 the code). If you need a hint or want to verify your changes, look at 
 the complete version in the `solution` subdirectory.
 
-
 ## Part A: Run the Workflow
 
 In this part of the exercise, you will start two Workers and run the 
@@ -24,7 +23,6 @@ does by using the Web UI to interpret the Event History.
 2. Start a Worker by running `npm run start` 
 3. In another terminal window, run the above command to start another Worker. 
 4. In another terminal window, run `npm run workflow` to start the Workflow
-
 
 ## Part B: Interpret Workflow Execution by Using the Web UI
 
