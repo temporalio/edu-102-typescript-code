@@ -1,4 +1,4 @@
-# Exercise #5: Version the Change with the `GetVersion` API
+# Exercise #5: Version the Change with the `Patching` API
 
 During this exercise, you will 
 
