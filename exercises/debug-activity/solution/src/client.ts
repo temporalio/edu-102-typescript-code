@@ -1,6 +1,6 @@
 import { Connection, Client } from '@temporalio/client';
 import { pizzaWorkflow } from './workflows';
-import {Address, Customer, Pizza, PizzaOrder, TaskQueueName} from './shared';
+import { Address, Customer, Pizza, PizzaOrder, TaskQueueName } from './shared';
 
 async function run() {
   // Connect to the default Server location (localhost:7233)
@@ -15,7 +15,7 @@ async function run() {
   const handle = await client.workflow.start(pizzaWorkflow, {
     args: [order],
     taskQueue: TaskQueueName,
-    workflowId: `pizza-order-${order.OrderNumber},`
+    workflowId: `pizza-order-${order.OrderNumber},`,
   });
 
   console.log(`Started workflow ${handle.workflowId}`);
@@ -32,38 +32,38 @@ run().catch((err) => {
 function createPizzaOrder(): PizzaOrder {
   const customer: Customer = {
     CustomerID: 12983,
-    Name: "María García",
-    Email: "maria1985@example.com",
-    Phone: "415-555-7418",
+    Name: 'María García',
+    Email: 'maria1985@example.com',
+    Phone: '415-555-7418',
   };
 
   const address: Address = {
-    Line1: "701 Mission Street",
-    Line2: "Apartment 9C",
-    City: "San Francisco",
-    State: "CA",
-    PostalCode: "94103",
+    Line1: '701 Mission Street',
+    Line2: 'Apartment 9C',
+    City: 'San Francisco',
+    State: 'CA',
+    PostalCode: '94103',
   };
 
   const p1: Pizza = {
-    Description: "Large, with mushrooms and onions",
+    Description: 'Large, with mushrooms and onions',
     Price: 1500,
   };
 
   const p2: Pizza = {
-    Description: "Small, with pepperoni",
+    Description: 'Small, with pepperoni',
     Price: 1200,
   };
 
   const p3: Pizza = {
-    Description: "Medium, with extra cheese",
+    Description: 'Medium, with extra cheese',
     Price: 1300,
   };
 
   const items: Pizza[] = [p1, p2, p3];
 
   const order: PizzaOrder = {
-    OrderNumber: "Z1238",
+    OrderNumber: 'Z1238',
     Customer: customer,
     Items: items,
     Address: address,

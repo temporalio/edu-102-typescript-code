@@ -8,16 +8,14 @@ beforeAll(async () => {
   Runtime.install({
     logger: new DefaultLogger('WARN', (entry: LogEntry) => console.log(`[${entry.level}]`, entry.message)),
   });
-
 });
 
 afterAll(async () => {
-//  await testEnv?.teardown();
+  //  await testEnv?.teardown();
 });
-
 
 test('estimateAgeActivity', async () => {
   const env = new MockActivityEnvironment();
-  const res = await env.run(activities.estimateAge, "Betty");
+  const res = await env.run(activities.estimateAge, 'Betty');
   expect(res).toEqual(76);
 });

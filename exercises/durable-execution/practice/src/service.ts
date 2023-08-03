@@ -89,11 +89,12 @@ app.get('/translate', (req: Request, res: Response) => {
 
   // If the phrase had an initial uppercase letter, reflect that in the translation
   const firstLetter = term[0];
-  const translatedTerm = firstLetter.toUpperCase() === firstLetter
-    ? translation.charAt(0).toUpperCase() + translation.slice(1)
-    : translation;
+  const translatedTerm =
+    firstLetter.toUpperCase() === firstLetter
+      ? translation.charAt(0).toUpperCase() + translation.slice(1)
+      : translation;
 
-	console.log(`Translated '${term}' to '${lang}' as '${translatedTerm}'`);
+  console.log(`Translated '${term}' to '${lang}' as '${translatedTerm}'`);
   res.status(200).send(translatedTerm);
 });
 

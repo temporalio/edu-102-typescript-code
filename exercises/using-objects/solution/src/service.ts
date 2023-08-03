@@ -67,8 +67,8 @@ app.get('/translate', (req: Request, res: Response) => {
   const lang = req.query.lang?.toString().toLowerCase();
   const term = req.query.term?.toString();
 
-  console.log(lang)
-  console.log(term)
+  console.log(lang);
+  console.log(term);
 
   if (!lang || !term) {
     res.status(400).send('Missing required "lang" or "term" parameter.');
@@ -91,9 +91,10 @@ app.get('/translate', (req: Request, res: Response) => {
 
   // If the phrase had an initial uppercase letter, reflect that in the translation
   const firstLetter = term[0];
-  const translatedTerm = firstLetter.toUpperCase() === firstLetter
-    ? translation.charAt(0).toUpperCase() + translation.slice(1)
-    : translation;
+  const translatedTerm =
+    firstLetter.toUpperCase() === firstLetter
+      ? translation.charAt(0).toUpperCase() + translation.slice(1)
+      : translation;
 
   res.status(200).send(translatedTerm);
 });

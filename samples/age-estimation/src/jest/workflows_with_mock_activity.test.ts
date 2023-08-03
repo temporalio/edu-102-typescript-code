@@ -4,7 +4,6 @@ import { estimateAgeWorkflow } from '../workflows';
 
 let testEnv: TestWorkflowEnvironment;
 
-
 beforeAll(async () => {
   // Use console.log instead of console.error to avoid red output
   // Filter INFO log messages for clearer test output
@@ -19,21 +18,20 @@ afterAll(async () => {
   await testEnv?.teardown();
 });
 
-
 test('estimateAgeWorkflow with mock activity', async () => {
   const { client, nativeConnection } = testEnv;
   const worker = await Worker.create({
-      connection: nativeConnection,
-      taskQueue: 'test',
-      workflowsPath: require.resolve('../workflows'),
-      activities: {
-        estimateAge: async () => 76,
-      },
+    connection: nativeConnection,
+    taskQueue: 'test',
+    workflowsPath: require.resolve('../workflows'),
+    activities: {
+      estimateAge: async () => 76,
+    },
   });
 
   await worker.runUntil(async () => {
     const result = await client.workflow.execute(estimateAgeWorkflow, {
-      args: ["Betty"],
+      args: ['Betty'],
       workflowId: 'test',
       taskQueue: 'test',
     });

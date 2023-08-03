@@ -1,7 +1,7 @@
-import {Address, Bill, Distance, OrderConfirmation} from './shared';
+import { Address, Bill, Distance, OrderConfirmation } from './shared';
 
 export async function getDistance(address: Address): Promise<Distance> {
-  console.log("getDistance invoked; determining distance to customer address");
+  console.log('getDistance invoked; determining distance to customer address');
 
   // this is a simulation, which calculates a fake (but consistent)
   // distance for a customer address based on its length. The value
@@ -16,18 +16,18 @@ export async function getDistance(address: Address): Promise<Distance> {
     Kilometers: kilometers,
   };
 
-  console.log("GetDistance complete", "Distance", distance.Kilometers);
+  console.log('GetDistance complete', 'Distance', distance.Kilometers);
   return distance;
 }
 
 export async function sendBill(bill: Bill): Promise<OrderConfirmation> {
-  console.log("sendBill invoked", "Customer", bill.CustomerID, "Amount", bill.Amount);
+  console.log('sendBill invoked', 'Customer', bill.CustomerID, 'Amount', bill.Amount);
 
   let chargeAmount = bill.Amount;
 
   // This month's special offer: Get $5 off all orders over $30
   if (bill.Amount > 3000) {
-    console.log("Applying discount");
+    console.log('Applying discount');
 
     chargeAmount -= 500; // reduce amount charged by 500 cents
   }
@@ -42,13 +42,13 @@ export async function sendBill(bill: Bill): Promise<OrderConfirmation> {
 
   const confirmation: OrderConfirmation = {
     OrderNumber: bill.OrderNumber,
-    ConfirmationNumber: "AB9923",
-    Status: "SUCCESS",
+    ConfirmationNumber: 'AB9923',
+    Status: 'SUCCESS',
     BillingTimestamp: Date.now(),
     Amount: chargeAmount,
   };
 
-  console.log("sendBill complete", "ConfirmationNumber", confirmation.ConfirmationNumber);
+  console.log('sendBill complete', 'ConfirmationNumber', confirmation.ConfirmationNumber);
 
   return confirmation;
 }

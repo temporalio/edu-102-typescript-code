@@ -1,4 +1,4 @@
-export const TaskQueueName = "pizza-tasks";
+export const TaskQueueName = 'pizza-tasks';
 
 export interface Address {
   Line1: string;

@@ -11,6 +11,7 @@
     "workflow": "ts-node src/client.ts",
     "service": "ts-node src/service.ts",
     "service.watch": "nodemon src/service.ts",
+    "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
     "test": "mocha --require ts-node/register --require source-map-support/register src/mocha/*.test.ts"
   },
   "nodemonConfig": {

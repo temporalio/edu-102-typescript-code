@@ -2,12 +2,11 @@ import { Connection, Client } from '@temporalio/client';
 import { sayHelloGoodbyeWorkflow } from './workflows';
 import { nanoid } from 'nanoid';
 
-import {TaskQueueName, TranslationWorkflowInput, TranslationWorkflowOutput} from './shared';
+import { TaskQueueName, TranslationWorkflowInput, TranslationWorkflowOutput } from './shared';
 
 async function run() {
-
   if (process.argv.length <= 3) {
-	  console.error("Must specify name and language code as command-line arguments")
+    console.error('Must specify name and language code as command-line arguments');
     process.exit(1);
   }
 
@@ -19,8 +18,8 @@ async function run() {
 
   const input: TranslationWorkflowInput = {
     Name: name,
-    LanguageCode: languageCode
-  }
+    LanguageCode: languageCode,
+  };
 
   const handle = await client.workflow.start(sayHelloGoodbyeWorkflow, {
     // type inference works! args: [name: string]
@@ -37,7 +36,7 @@ async function run() {
   const output = JSON.stringify(data);
 
   // optional: wait for client result
-  console.log(output)
+  console.log(output);
 }
 
 run().catch((err) => {

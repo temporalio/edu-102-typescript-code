@@ -1,8 +1,7 @@
 import axios from 'axios';
-import {TranslationActivityInput, TranslationActivityOutput} from './shared';
+import { TranslationActivityInput, TranslationActivityOutput } from './shared';
 
 export async function translateTerm(input: TranslationActivityInput): Promise<TranslationActivityOutput> {
-
   const lang = encodeURIComponent(input.LanguageCode);
   const term = encodeURIComponent(input.Term);
 
@@ -10,8 +9,7 @@ export async function translateTerm(input: TranslationActivityInput): Promise<Tr
   const response = await axios.get(url);
   const responseData = response.data;
 
-  const result: TranslationActivityOutput = {Translation: responseData}
+  const result: TranslationActivityOutput = { Translation: responseData };
 
-  return (result);
-
+  return result;
 }

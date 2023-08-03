@@ -5,7 +5,6 @@ import * as activities from '../activities';
 import sinon from 'sinon';
 import assert from 'assert';
 
-
 describe('estimateAge activity', async () => {
   before(async () => {
     // Use console.log instead of console.error to avoid red output
@@ -19,9 +18,7 @@ describe('estimateAge activity', async () => {
         console.log('Logger is already configured');
       }
     }
-
   });
-
 
   afterEach(() => {
     sinon.restore();
@@ -29,7 +26,7 @@ describe('estimateAge activity', async () => {
 
   it('runs estimateAgeWorkflow with activity call', async () => {
     const env = new MockActivityEnvironment();
-    const res = await env.run(activities.estimateAge, "Betty");
+    const res = await env.run(activities.estimateAge, 'Betty');
     assert.equal(res, 76);
   });
 });

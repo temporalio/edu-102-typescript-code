@@ -1,11 +1,10 @@
 import { TestWorkflowEnvironment } from '@temporalio/testing';
-import { after,  afterEach, before, it } from 'mocha';
+import { after, afterEach, before, it } from 'mocha';
 import { Worker, Runtime, DefaultLogger, LogEntry } from '@temporalio/worker';
 import { estimateAgeWorkflow } from '../workflows';
 import * as activities from '../activities';
 import sinon from 'sinon';
 import assert from 'assert';
-
 
 describe('estimateAge workflow', async () => {
   let testEnv: TestWorkflowEnvironment;
@@ -37,15 +36,15 @@ describe('estimateAge workflow', async () => {
   it('runs estimateAgeWorkflow with activity call', async () => {
     const { client, nativeConnection } = testEnv;
     const worker = await Worker.create({
-        connection: nativeConnection,
-        taskQueue: 'test',
-        workflowsPath: require.resolve('../workflows'),
-        activities,
+      connection: nativeConnection,
+      taskQueue: 'test',
+      workflowsPath: require.resolve('../workflows'),
+      activities,
     });
 
     await worker.runUntil(async () => {
       const result = await client.workflow.execute(estimateAgeWorkflow, {
-        args: ["Betty"],
+        args: ['Betty'],
         workflowId: 'test',
         taskQueue: 'test',
       });

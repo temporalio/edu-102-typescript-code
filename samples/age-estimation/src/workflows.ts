@@ -7,6 +7,5 @@ const { estimateAge } = proxyActivities<typeof activities>({
 
 export async function estimateAgeWorkflow(name: string): Promise<string> {
   const age = await estimateAge(name);
-  return (`${name} has an estimated age of ${age}`);
-
+  return `${name} has an estimated age of ${age}`;
 }

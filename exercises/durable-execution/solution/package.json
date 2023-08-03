@@ -10,7 +10,8 @@
     "start.watch": "nodemon src/worker.ts",
     "workflow": "ts-node src/client.ts",
     "service": "ts-node src/service.ts",
-    "service.watch": "nodemon src/service.ts"
+    "service.watch": "nodemon src/service.ts",
+    "format": "prettier --config .prettierrc 'src/**/*.ts' --write"
   },
   "nodemonConfig": {
     "execMap": {

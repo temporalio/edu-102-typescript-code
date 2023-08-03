@@ -1,10 +1,9 @@
 import process from 'process';
 import { Connection, Client } from '@temporalio/client';
 import { estimateAgeWorkflow } from './workflows';
-import {TaskQueueName, WorkflowID} from './shared';
+import { TaskQueueName, WorkflowID } from './shared';
 
 async function run() {
-
   if (process.argv.length <= 2) {
     console.error('Must specify a name as the command-line argument');
     process.exit(1);

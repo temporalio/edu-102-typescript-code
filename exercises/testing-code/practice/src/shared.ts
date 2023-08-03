@@ -1,4 +1,4 @@
-export const TaskQueueName = "translation-tasks"
+export const TaskQueueName = 'translation-tasks';
 
 export interface TranslationWorkflowInput {
   Name: string;
