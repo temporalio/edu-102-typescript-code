@@ -39,10 +39,5 @@ export async function sayHelloGoodbyeWorkflow(input: TranslationWorkflowInput): 
   const goodbyeResult: TranslationActivityOutput = await translateTerm(goodbyeInput);
   const goodbyeMessage = `${goodbyeResult.Translation}, ${input.Name}`;
 
-  const output: TranslationWorkflowOutput = {
-    HelloMessage: helloMessage,
-    GoodbyeMessage: goodbyeMessage,
-  };
-
-  return output;
+  return { helloMessage, goodbyeMessage };
 }

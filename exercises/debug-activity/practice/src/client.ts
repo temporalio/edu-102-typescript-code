@@ -3,8 +3,7 @@ import { pizzaWorkflow } from './workflows';
 import { Address, Customer, Pizza, PizzaOrder, TaskQueueName } from './shared';
 
 async function run() {
-  // Connect to the default Server location (localhost:7233)
-  const connection = await Connection.connect();
+  const connection = await Connection.connect({ address: 'localhost:7233' });
 
   const client = new Client({
     connection,

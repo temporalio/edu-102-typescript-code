@@ -49,12 +49,8 @@ class SimpleCustomerMap implements CustomerInfoDatabase {
     this.customers[customer03.CustomerID] = customer03;
   }
 
-  public Get(customerID: string): CustomerInfo | null {
-    const customer = this.customers[customerID];
-    if (!customer) {
-      return null;
-    }
-    return customer;
+  public get(customerId: string): CustomerInfo | undefined {
+    return this.customers[customerId];
   }
 }
 

@@ -34,6 +34,5 @@ export async function loanProcessingWorkflow(input: CustomerInfo): Promise<strin
   }
 
 
-	const result = `Loan for customer '${input.CustomerID}' has been fully paid (total=${totalPaid})`;
-  return result;
+  return `Loan for customer '${input.CustomerID}' has been fully paid (total=${totalPaid})`;
 }

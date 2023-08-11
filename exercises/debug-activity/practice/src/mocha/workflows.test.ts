@@ -57,15 +57,14 @@ describe('pizza workflow', async () => {
       activities,
     });
 
-    await worker.runUntil(async () => {
-      const result = await client.workflow.execute(pizzaWorkflow, {
+    const result = await worker.runUntil(
+      client.workflow.execute(pizzaWorkflow, {
         args: [order],
         workflowId: 'test-pizza',
         taskQueue: TaskQueueName,
-      });
-
-      assert.equal(result.OrderNumber, confirmation.OrderNumber);
-    });
+      })
+    );
+    assert.equal(result.OrderNumber, confirmation.OrderNumber);
   }).timeout(10_000);
 });
 

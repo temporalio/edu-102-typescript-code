@@ -13,7 +13,7 @@ const { sendBill, getDistance } = proxyActivities<typeof activities>({
 });
 
 export async function pizzaWorkflow(order: PizzaOrder): Promise<OrderConfirmation> {
-  let distance: Distance = { Kilometers: 0 };
+  let distance: Distance | undefined = undefined;
   let totalPrice = 0;
 
   for (const pizza of order.Items) {

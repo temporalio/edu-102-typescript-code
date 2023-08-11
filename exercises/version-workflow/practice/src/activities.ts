@@ -7,15 +7,10 @@ export async function chargeCustomer(input: ChargeInput):  Promise<string> {
 
   const context = activity.Context.current();
 
-  context.log.info("*** Charging customer ***" +
-    "CustomerID: " + input.CustomerID +
-    "Amount: " + input.Amount +
-    "PeriodNumber: "+ input.PeriodNumber +
-    "NumberOfPeriods: "+ input.NumberOfPeriods)
+  context.log.info("*** Charging customer ***", input)
 
   // just pretend that we charged them
-  const confirmation = `Charged ${input.Amount} to customer '${input.CustomerID}'`;
-  return confirmation;
+  return `Charged ${input.Amount} to customer '${input.CustomerID}'`;
 }
 
 export async function sendThankYouToCustomer(input: CustomerInfo): Promise<string> {

@@ -12,7 +12,7 @@ async function run() {
 
   const name = process.argv[2];
   const languageCode = process.argv[3];
-  const connection = await Connection.connect();
+  const connection = await Connection.connect({ address: 'localhost:7233' });
 
   const client = new Client({ connection });
 

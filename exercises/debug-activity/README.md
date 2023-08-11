@@ -20,7 +20,7 @@ since the next part of this exercise will ask you to determine what it
 does by using the Web UI to interpret the Event History.
 
 1. Change to the `exercises/debug-activity/practice` directory
-2. Start a Worker by running `npm run start` 
+2. Start a Worker by running `npm start` 
 3. In another terminal window, run the above command to start another Worker. 
 4. In another terminal window, run `npm run workflow` to start the Workflow
 
