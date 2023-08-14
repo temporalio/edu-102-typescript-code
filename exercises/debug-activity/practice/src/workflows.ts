@@ -1,4 +1,5 @@
 import { proxyActivities, log, sleep } from '@temporalio/workflow';
+import { ApplicationFailure } from '@temporalio/common';
 import type * as activities from './activities';
 import { Distance, OrderConfirmation, PizzaOrder } from './shared';
 
@@ -25,7 +26,7 @@ export async function pizzaWorkflow(order: PizzaOrder): Promise<OrderConfirmatio
   }
 
   if (order.isDelivery && distance.kilometers > 25) {
-    throw new Error('Customer lives too far away for delivery');
+    throw new ApplicationFailure('Customer lives too far away for delivery');
   }
 
   // We use a short Timer duration here to avoid delaying the exercise
