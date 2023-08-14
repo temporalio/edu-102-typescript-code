@@ -36,4 +36,4 @@ clicking the button below:
 
 Alternatively, you can follow 
 [these instructions](https://learn.temporal.io/getting_started/typescript/dev_environment/) to 
-set up your own Temporal Cluster with Docker Compose, which you can use as an exercise environment.
+set up your own Temporal Cluster with Temporal CLI, which you can use as an exercise environment.
