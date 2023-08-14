@@ -17,27 +17,27 @@ export async function sayHelloGoodbyeWorkflow(input: TranslationWorkflowInput): 
   // TODO Log, at the Info level, when the Workflow function is invoked
   //      and be sure to include the name passed as input
 
-  const helloInput: TranslationActivityInput = {
-    Term: 'Hello',
-    LanguageCode: input.LanguageCode,
+  const helloInput = {
+    term: 'Hello',
+    languageCode: input.languageCode,
   };
 
   // TODO Log, at the Debug level, a message about the Activity to be executed,
   //      be sure to include the language code passed as input
-  const helloResult: TranslationActivityOutput = await translateTerm(helloInput);
-  const helloMessage = `${helloResult.Translation}, ${input.Name}`;
+  const helloResult = await translateTerm(helloInput);
+  const helloMessage = `${helloResult.translation}, ${input.name}`;
 
   // TODO: (Part C): log a message at the Debug level and then start a Timer for 10 seconds
 
-  const goodbyeInput: TranslationActivityInput = {
-    Term: 'Goodbye',
-    LanguageCode: input.LanguageCode,
+  const goodbyeInput = {
+    term: 'Goodbye',
+    languageCode: input.languageCode,
   };
 
   // TODO Log, at the Debug level, a message about the Activity to be executed,
   //      be sure to include the language code passed as input
-  const goodbyeResult: TranslationActivityOutput = await translateTerm(goodbyeInput);
-  const goodbyeMessage = `${goodbyeResult.Translation}, ${input.Name}`;
+  const goodbyeResult = await translateTerm(goodbyeInput);
+  const goodbyeMessage = `${goodbyeResult.translation}, ${input.name}`;
 
   return { helloMessage, goodbyeMessage };
 }

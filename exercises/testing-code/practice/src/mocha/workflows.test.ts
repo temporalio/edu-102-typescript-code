@@ -1,7 +1,7 @@
 /*
 import { TestWorkflowEnvironment } from '@temporalio/testing';
 import { before, describe, it } from 'mocha';
-import { Worker, Runtime, DefaultLogger, LogEntry } from '@temporalio/worker';
+import { Worker } from '@temporalio/worker';
 import {sayHelloGoodbyeWorkflow } from '../workflows';
 import * as activities from '../activities';
 import assert from 'assert';
@@ -10,16 +10,6 @@ describe('SayHelloGoodbye workflow', () => {
   let testEnv: TestWorkflowEnvironment;
 
   before(async() => {
-    try {
-      Runtime.install({
-        logger: new DefaultLogger('WARN', (entry: LogEntry) => console.log(`[${entry.level}]`, entry.message)),
-      });
-    } catch (err: any) {
-      if (err.name === 'IllegalStateError') {
-        console.log('Logger is already configured');
-      }
-    }
-
     testEnv = await TestWorkflowEnvironment.createTimeSkipping();
   });
 
@@ -32,32 +22,32 @@ describe('SayHelloGoodbye workflow', () => {
     const { client, nativeConnection } = testEnv;
 
     const workflowInput = {
-      Name:         "Pierre",
-      LanguageCode: "fr",
+      name:         "Pierre",
+      languageCode: "fr",
     };
 
     const worker = await Worker.create({
-        connection: nativeConnection,
+      connection: nativeConnection,
+      taskQueue: 'test',
+      workflowsPath: require.resolve('../workflows'),
+      activities,
+    });
+
+    const result = await worker.runUntil(
+      client.workflow.execute(sayHelloGoodbyeWorkflow, {
+        args: [workflowInput],
+        workflowId: 'test',
         taskQueue: 'test',
-        workflowsPath: require.resolve('../workflows'),
-        activities,
-    });
+      })
+    );
 
-    await worker.runUntil(async () => {
-      const result = await client.workflow.execute(sayHelloGoodbyeWorkflow,{
-          args: [workflowInput],
-          workflowId: 'test',
-          taskQueue: 'test',
-        });
+    // TODO: Assert that Workflow Execution completed
 
-        // TODO: Assert that Workflow Execution completed
+    // TODO: Assert that the HelloMessage field in the
+    //       result is: Bonjour, Pierre
 
-        // TODO: Assert that the HelloMessage field in the
-        //       result is: Bonjour, Pierre
-
-        // TODO: Assert that the GoodbyeMessage field in the
-        //       result is: Au revoir, Pierre
-    });
+    // TODO: Assert that the GoodbyeMessage field in the
+    //       result is: Au revoir, Pierre
 
   });
 });

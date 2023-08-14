@@ -1,12 +1,11 @@
 import { Connection, Client } from '@temporalio/client';
-import { loanProcessingWorkflow} from './workflows';
+import { loanProcessingWorkflow } from './workflows';
 import { nanoid } from 'nanoid';
 import { customerDB } from './customerdb';
 
-import {TaskQueueName} from './shared';
+import { TaskQueueName } from './shared';
 
 async function run() {
-
   if (process.argv.length <= 2) {
     console.error('Must specify a customer ID as the command-line argument');
     process.exit(1);
@@ -17,7 +16,7 @@ async function run() {
   const db = customerDB();
   const customerInfo = db.Get(customerID);
   if (!customerInfo) {
-    console.log("Customer not found");
+    console.log('Customer not found');
     process.exit(1);
   }
 
@@ -38,7 +37,7 @@ async function run() {
   const output = JSON.stringify(data);
 
   // optional: wait for client result
-  console.log(output)
+  console.log(output);
 }
 
 run().catch((err) => {

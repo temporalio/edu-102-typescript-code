@@ -1,17 +1,15 @@
-import { Worker } from '@temporalio/worker';
 import * as activities from './activities';
-import { TaskQueueName } from './shared';
-
-// Configure the Worker logger to show Debug level messages
-import { DefaultLogger, Runtime } from '@temporalio/worker';
-const logger = new DefaultLogger('DEBUG');
-Runtime.install({ logger });
+import { TASK_QUEUE_NAME } from './shared';
+import { NativeConnection, Worker } from '@temporalio/worker';
 
 async function run() {
+  const connection = await NativeConnection.connect({ address: 'localhost:7233' });
+
   const worker = await Worker.create({
+    taskQueue: TASK_QUEUE_NAME,
+    connection,
     workflowsPath: require.resolve('./workflows'),
     activities,
-    taskQueue: TaskQueueName,
   });
 
   await worker.run();

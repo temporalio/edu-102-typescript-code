@@ -7,26 +7,26 @@ export async function getDistance(address: Address): Promise<Distance> {
   // distance for a customer address based on its length. The value
   // will therefore be different when called with different addresses,
   // but will be the same across all invocations with the same address.
-  let kilometers: number = address.Line1.length + address.Line2.length - 10;
+  let kilometers: number = address.line1.length + address.line2.length - 10;
   if (kilometers < 1) {
     kilometers = 5;
   }
 
-  const distance: Distance = {
-    Kilometers: kilometers,
+  const distance = {
+    kilometers
   };
 
-  console.log('GetDistance complete', 'Distance', distance.Kilometers);
+  console.log('GetDistance complete', 'Distance', distance.kilometers);
   return distance;
 }
 
 export async function sendBill(bill: Bill): Promise<OrderConfirmation> {
-  console.log('sendBill invoked', 'Customer', bill.CustomerID, 'Amount', bill.Amount);
+  console.log('sendBill invoked', 'Customer', bill.customerID, 'Amount', bill.amount);
 
-  let chargeAmount = bill.Amount;
+  let chargeAmount = bill.amount;
 
   // This month's special offer: Get $5 off all orders over $30
-  if (bill.Amount > 3000) {
+  if (bill.amount > 3000) {
     console.log('Applying discount');
 
     chargeAmount -= 500; // reduce amount charged by 500 cents
@@ -40,15 +40,15 @@ export async function sendBill(bill: Bill): Promise<OrderConfirmation> {
 
   // pretend we called a payment processing service here :-)
 
-  const confirmation: OrderConfirmation = {
-    OrderNumber: bill.OrderNumber,
-    ConfirmationNumber: 'AB9923',
-    Status: 'SUCCESS',
-    BillingTimestamp: Date.now(),
-    Amount: chargeAmount,
+  const confirmation = {
+    orderNumber: bill.orderNumber,
+    confirmationNumber: 'AB9923',
+    status: 'SUCCESS',
+    billingTimestamp: Date.now(),
+    amount: chargeAmount,
   };
 
-  console.log('sendBill complete', 'ConfirmationNumber', confirmation.ConfirmationNumber);
+  console.log('sendBill complete', 'ConfirmationNumber', confirmation.confirmationNumber);
 
   return confirmation;
 }

@@ -122,7 +122,7 @@ the change, add the following code:
 ```
 
 This establishes a logical branch for code execution, identified 
-by the user-defined Change ID `MovedThankYouAfterLoop`. 
+by the user-defined Patch ID `version-2`. 
 
 Now wrap the code you previously moved after the loop in a
 conditional statement that tests if `patched` is equal to

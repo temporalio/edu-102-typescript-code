@@ -1,48 +1,35 @@
 import { MockActivityEnvironment } from '@temporalio/testing';
-import { before, describe, it } from 'mocha';
-import { Runtime, DefaultLogger, LogEntry } from '@temporalio/worker';
+import { describe, it } from 'mocha';
 import * as activities from '../activities';
 import assert from 'assert';
-import { TranslationActivityInput, TranslationActivityOutput } from '../shared';
+import { TranslationActivityOutput } from '../shared';
 
 describe('translateTerm activity', async () => {
-  before(() => {
-    try {
-      Runtime.install({
-        logger: new DefaultLogger('WARN', (entry: LogEntry) => console.log(`[${entry.level}]`, entry.message)),
-      });
-    } catch (err: any) {
-      if (err.name === 'IllegalStateError') {
-        console.log('Logger is already configured');
-      }
-    }
-  });
-
   it('successfully translates "Hello" to German', async () => {
     const env = new MockActivityEnvironment();
-    const input: TranslationActivityInput = {
-      Term: 'Hello',
-      LanguageCode: 'de',
+    const input = {
+      term: 'Hello',
+      languageCode: 'de',
     };
     const result: TranslationActivityOutput = await env.run(activities.translateTerm, input);
-    assert.equal(result.Translation, 'Hallo');
+    assert.equal(result.translation, 'Hallo');
   });
 
   it('successfully translates "Goodbye" to Latvian', async () => {
     const env = new MockActivityEnvironment();
-    const input: TranslationActivityInput = {
-      Term: 'Goodbye',
-      LanguageCode: 'lv',
+    const input = {
+      term: 'Goodbye',
+      languageCode: 'lv',
     };
     const result: TranslationActivityOutput = await env.run(activities.translateTerm, input);
-    assert.equal(result.Translation, 'Ardievu');
+    assert.equal(result.translation, 'Ardievu');
   });
 
   it('fails to translate with bad language code', async () => {
     const env = new MockActivityEnvironment();
-    const input: TranslationActivityInput = {
-      Term: 'Hello',
-      LanguageCode: 'xq',
+    const input = {
+      term: 'Hello',
+      languageCode: 'xq',
     };
     try {
       await env.run(activities.translateTerm, input);

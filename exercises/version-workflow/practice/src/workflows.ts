@@ -2,27 +2,25 @@ import { patched } from '@temporalio/workflow';
 import { proxyActivities, sleep, log } from '@temporalio/workflow';
 // Only import the activity types
 import type * as activities from './activities';
-import {ChargeInput} from './shared';
-import {CustomerInfo} from './customerdb';
+import { ChargeInput } from './shared';
+import { CustomerInfo } from './customerdb';
 
 const { sendThankYouToCustomer, chargeCustomer } = proxyActivities<typeof activities>({
   startToCloseTimeout: '60 seconds',
 });
 
 export async function loanProcessingWorkflow(input: CustomerInfo): Promise<string> {
-
   let totalPaid = 0;
 
-  await sendThankYouToCustomer(input)
+  await sendThankYouToCustomer(input);
 
-  for(let period = 1; period <= input.NumberOfPeriods; period++) {
-
-    const chargeInput: ChargeInput = {
-      CustomerID:      input.CustomerID,
-      Amount:          input.Amount,
-      PeriodNumber:    period,
+  for (let period = 1; period <= input.NumberOfPeriods; period++) {
+    const chargeInput = {
+      CustomerID: input.CustomerID,
+      Amount: input.Amount,
+      PeriodNumber: period,
       NumberOfPeriods: input.NumberOfPeriods,
-    }
+    };
 
     await chargeCustomer(chargeInput);
 
@@ -32,7 +30,6 @@ export async function loanProcessingWorkflow(input: CustomerInfo): Promise<strin
     // using 3 seconds instead of 30 days for faster results
     await sleep('3 seconds');
   }
-
 
   return `Loan for customer '${input.CustomerID}' has been fully paid (total=${totalPaid})`;
 }

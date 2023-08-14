@@ -107,7 +107,6 @@ probably find that it never does, so open the Web UI and look at the
 detail page for this execution to determine why it hasn't finished.
 Do this before continuing with the next part of the exercise.
 
-
 ## Part D: Fixing the Activity Bug
 
 You should have observed that the `sendBill` Activity is failing with an 
@@ -121,18 +120,18 @@ layout.
      discount did not write a test case for it. 
      Deploying the untested code is what led to this failure, but 
      writing a test now will help you to verify the fix. 
-2. Open the `activity_test.ts` file in the editor
+2. Open the `src/mocha/activity_test.ts` file in the editor
 3. Add a new test by copying the existing `sends a bill for a typical order` test
    function and renaming the new function as `fails to send bill with negative amount`, and then make the following changes to it:
    * Change the `Description` to `5 large cheese pizzas`
    * Change the `Amount` to `6500` ($65)
    * Change the comment next to the `Amount` field to say 
      `amount qualifies for discount`
-   * Change the expected price in the `assert.Equal` statement to `6000`, 
+   * Change the expected price in the `assert.equals` statement to `6000`, 
      which is the $65 amount minus the $5 discount.
 4. Save the changes and close the editor
 5. Run `npm test`. Since you have not yet fixed the bug, the test will fail.
-6. Open the `src/activities.ts` file in the editor and find where the `SendBill` 
+6. Open the `src/activities.ts` file in the editor and find where the `sendBill` 
    Activity is defined.
 7. Examine the code where the discount is applied. Once you spot the bug, 
    fix it. 
@@ -142,14 +141,13 @@ Make sure the bug is fixed before continuing to the next part. Since
 you wrote a test case for this, you can verify that it's fixed by 
 running `npm test` again.
 
-
 ## Part E: Deploying and Verifying the Fix
 
 1. Press Ctrl-C in both terminal windows used to run the Workers.
    Since Workers cache the code, the changes won't take effect until 
    they have been restarted. Do not press Ctrl-C in the terminal used
    to start the Workflow.
-2. Start both Workers by running `npm run workflow` in their respective 
+2. Start both Workers by running `npm start` in their respective 
    terminals.
 3. Click the **History** tab near the top of the detail page in the Web UI
 4. Click the toggle button labeled **Auto refresh** near the upper-right
@@ -167,5 +165,3 @@ non-deterministic error. Later in this course, you'll learn how to safely
 deploy changes to Workflow Definitions.
 
 ### This is the end of the exercise.
-
-

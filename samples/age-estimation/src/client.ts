@@ -1,7 +1,7 @@
 import process from 'process';
 import { Connection, Client } from '@temporalio/client';
 import { estimateAgeWorkflow } from './workflows';
-import { TaskQueueName, WorkflowID } from './shared';
+import { TASK_QUEUE_NAME, WORKFLOW_ID} from './shared';
 
 async function run() {
   if (process.argv.length <= 2) {
@@ -11,7 +11,7 @@ async function run() {
 
   const name = process.argv[2];
 
-  const connection = await Connection.connect();
+  const connection = await Connection.connect({ address: 'localhost:7233' });
 
   const client = new Client({
     connection,
@@ -19,8 +19,8 @@ async function run() {
 
   const handle = await client.workflow.start(estimateAgeWorkflow, {
     args: [name],
-    taskQueue: TaskQueueName,
-    workflowId: WorkflowID,
+    taskQueue: TASK_QUEUE_NAME,
+    workflowId: WORKFLOW_ID,
   });
   console.log(`Started workflow ${handle.workflowId}`);
 

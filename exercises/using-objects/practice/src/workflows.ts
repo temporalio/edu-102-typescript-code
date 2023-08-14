@@ -1,5 +1,4 @@
 import { proxyActivities } from '@temporalio/workflow';
-// Only import the activity types
 import type * as activities from './activities';
 import { TranslationWorkflowInput, TranslationWorkflowOutput } from './shared';
 
@@ -14,25 +13,20 @@ export async function sayHelloGoodbyeWorkflow(input: TranslationWorkflowInput): 
 
   // TODO Replace "string" below with your Activity output type and use
   // your input object in the translateTerm call in the following line
-  const helloResult: string = await translateTerm('Hello', input.LanguageCode);
+  const helloResult = await translateTerm('Hello', input.languageCode);
 
   // TODO Update the `helloResult` parameter to use the Translation field from the Activity output struct
-  const helloMessage = `${helloResult}, ${input.Name}`;
+  const helloMessage = `${helloResult}, ${input.name}`;
 
   // TODO Create your Activity input struct and populate it with the last
   //      two fields from the translateTerm call below
 
   // TODO Replace "string" below with your Activity output type and use
   // your input object in the translateTerm call in the following line
-  const goodbyeResult: string = await translateTerm('Goodbye', input.LanguageCode);
+  const goodbyeResult = await translateTerm('Goodbye', input.languageCode);
 
   // TODO Update the `goodbyeResult` parameter to use the Translation field from the Activity output struct
-  const goodbyeMessage = `${goodbyeResult}, ${input.Name}`;
+  const goodbyeMessage = `${goodbyeResult}, ${input.name}`;
 
-  const output: TranslationWorkflowOutput = {
-    HelloMessage: helloMessage,
-    GoodbyeMessage: goodbyeMessage,
-  };
-
-  return output;
+  return  { helloMessage, goodbyeMessage };
 }

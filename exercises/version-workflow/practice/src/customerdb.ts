@@ -1,11 +1,10 @@
-export interface CustomerInfo  {
-	CustomerID:      string;
-	Name:            string;
-	EmailAddress:    string;
-	Amount:          number;
-	NumberOfPeriods: number;
+export interface CustomerInfo {
+  CustomerID: string;
+  Name: string;
+  EmailAddress: string;
+  Amount: number;
+  NumberOfPeriods: number;
 }
-
 
 interface CustomerInfoDatabase {
   Get(customerID: string): CustomerInfo | null;
@@ -21,25 +20,25 @@ class SimpleCustomerMap implements CustomerInfoDatabase {
 
   private populate() {
     const customer01: CustomerInfo = {
-      CustomerID: "a100",
-      Name: "Ana Garcia",
-      EmailAddress: "ana@example.com",
+      CustomerID: 'a100',
+      Name: 'Ana Garcia',
+      EmailAddress: 'ana@example.com',
       Amount: 500,
       NumberOfPeriods: 10,
     };
 
     const customer02: CustomerInfo = {
-      CustomerID: "a101",
-      Name: "Amit Singh",
-      EmailAddress: "asingh@example.com",
+      CustomerID: 'a101',
+      Name: 'Amit Singh',
+      EmailAddress: 'asingh@example.com',
       Amount: 250,
       NumberOfPeriods: 15,
     };
 
     const customer03: CustomerInfo = {
-      CustomerID: "a102",
+      CustomerID: 'a102',
       Name: "Mary O'Connor",
-      EmailAddress: "marymo@example.com",
+      EmailAddress: 'marymo@example.com',
       Amount: 425,
       NumberOfPeriods: 12,
     };
@@ -49,8 +48,12 @@ class SimpleCustomerMap implements CustomerInfoDatabase {
     this.customers[customer03.CustomerID] = customer03;
   }
 
-  public get(customerId: string): CustomerInfo | undefined {
-    return this.customers[customerId];
+  public Get(customerID: string): CustomerInfo | null {
+    const customer = this.customers[customerID];
+    if (!customer) {
+      return null;
+    }
+    return customer;
   }
 }
 

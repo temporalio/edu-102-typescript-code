@@ -2,7 +2,7 @@ import { Connection, Client } from '@temporalio/client';
 import { sayHelloGoodbyeWorkflow } from './workflows';
 import { nanoid } from 'nanoid';
 
-import { TaskQueueName, TranslationWorkflowInput, TranslationWorkflowOutput } from './shared';
+import { TASK_QUEUE_NAME, TranslationWorkflowInput } from './shared';
 
 async function run() {
   if (process.argv.length <= 3) {
@@ -12,28 +12,26 @@ async function run() {
 
   const name = process.argv[2];
   const languageCode = process.argv[3];
-  const connection = await Connection.connect();
+  const connection = await Connection.connect({ address: 'localhost:7233' });
 
   const client = new Client({ connection });
 
   const input: TranslationWorkflowInput = {
-    Name: name,
-    LanguageCode: languageCode,
+    name,
+    languageCode,
   };
 
   const handle = await client.workflow.start(sayHelloGoodbyeWorkflow, {
     // type inference works! args: [name: string]
     args: [input],
-    taskQueue: TaskQueueName,
+    taskQueue: TASK_QUEUE_NAME,
     // in practice, use a meaningful business ID, like customerId or transactionId
     workflowId: 'translation-workflow-' + nanoid(),
   });
 
   console.log(`Started workflow ${handle.workflowId}`);
 
-  const data = await handle.result();
-
-  const output = JSON.stringify(data);
+  const output = await handle.result();
 
   // optional: wait for client result
   console.log(output);

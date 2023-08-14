@@ -10,7 +10,7 @@
     "start.watch": "nodemon src/worker.ts",
     "workflow": "ts-node src/client.ts",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
-    "test": "mocha --require ts-node/register --require source-map-support/register src/mocha/*.test.ts"
+    "test": "mocha --exit --require ts-node/register --require source-map-support/register src/mocha/*.test.ts"
   },
   "nodemonConfig": {
     "execMap": {
@@ -22,20 +22,20 @@
     ]
   },
   "dependencies": {
-    "@temporalio/activity": "1.7.0",
-    "@temporalio/client": "1.7.0",
-    "@temporalio/worker": "1.7.0",
-    "@temporalio/workflow": "1.7.0",
+    "@temporalio/activity": "~1.8.0",
+    "@temporalio/client": "~1.8.0",
+    "@temporalio/worker": "~1.8.0",
+    "@temporalio/workflow": "~1.8.0",
     "axios": "^1.4.0",
     "express": "^4.18.2",
     "nanoid": "3.x"
   },
   "devDependencies": {
-    "@temporalio/testing": "1.7.0",
-    "@tsconfig/node19": "^1.0.0",
+    "@temporalio/testing": "~1.8.0",
+    "@tsconfig/node18": "^1.0.0",
     "@types/axios": "^0.14.0",
     "@types/mocha": "8.x",
-    "@types/node": "^16.11.43",
+    "@types/node": "^18.11.43",
     "@types/sinon": "^10.0.4",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",

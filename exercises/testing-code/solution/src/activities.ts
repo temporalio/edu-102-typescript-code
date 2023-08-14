@@ -6,10 +6,10 @@ import { TranslationActivityInput, TranslationActivityOutput } from './shared';
 export async function translateTerm(input: TranslationActivityInput): Promise<TranslationActivityOutput> {
   const context = activity.Context.current();
 
-  context.log.info('Translating term:', { LanguageCode: input.LanguageCode, Term: input.Term });
+  context.log.info('Translating term:', { LanguageCode: input.languageCode, Term: input.term });
 
-  const lang = encodeURIComponent(input.LanguageCode);
-  const term = encodeURIComponent(input.Term);
+  const lang = encodeURIComponent(input.languageCode);
+  const term = encodeURIComponent(input.term);
 
   const url = `http://localhost:9998/translate?lang=${lang}&term=${term}`;
   let content = '';
@@ -28,6 +28,5 @@ export async function translateTerm(input: TranslationActivityInput): Promise<Tr
     }
   }
 
-  const result = { Translation: content };
-  return result;
+  return { translation: content };
 }

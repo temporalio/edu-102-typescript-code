@@ -28,27 +28,27 @@ describe('SayHelloGoodbye workflow', () => {
   });
 
   it('successfully completes French translation with a mocked call', async () => {
-    const workflowInput: TranslationWorkflowInput = {
-      Name: 'Pierre',
-      LanguageCode: 'fr',
+    const workflowInput = {
+      name: 'Pierre',
+      languageCode: 'fr',
     };
 
-    const helloInput: TranslationActivityInput = {
-      Term: 'Hello',
-      LanguageCode: workflowInput.LanguageCode,
+    const helloInput = {
+      term: 'Hello',
+      languageCode: workflowInput.languageCode,
     };
 
-    const helloOutput: TranslationActivityOutput = {
-      Translation: 'Bonjour',
+    const helloOutput = {
+      translation: 'Bonjour',
     };
 
-    const goodbyeInput: TranslationActivityInput = {
-      Term: 'Goodbye',
-      LanguageCode: workflowInput.LanguageCode,
+    const goodbyeInput = {
+      term: 'Goodbye',
+      languageCode: workflowInput.languageCode,
     };
 
-    const goodbyeOutput: TranslationActivityOutput = {
-      Translation: 'Au revoir',
+    const goodbyeOutput = {
+      translation: 'Au revoir',
     };
 
     const { client, nativeConnection } = testEnv;
@@ -64,14 +64,14 @@ describe('SayHelloGoodbye workflow', () => {
       activities: { translateTerm: translateTermMock },
     });
 
-    await worker.runUntil(async () => {
-      const result = await client.workflow.execute(sayHelloGoodbyeWorkflow, {
+    const result = await worker.runUntil(
+      client.workflow.execute(sayHelloGoodbyeWorkflow, {
         args: [workflowInput],
         workflowId: 'test',
         taskQueue: 'test',
-      });
-      assert.equal(result.HelloMessage, 'Bonjour, Pierre');
-      assert.equal(result.GoodbyeMessage, 'Au revoir, Pierre');
-    });
+      })
+    );
+    assert.equal(result.helloMessage, 'Bonjour, Pierre');
+    assert.equal(result.goodbyeMessage, 'Au revoir, Pierre');
   });
 });

@@ -1,48 +1,48 @@
-export const TaskQueueName = 'pizza-tasks';
+export const TASK_QUEUE_NAME = 'pizza-tasks';
 
 export interface Address {
-  Line1: string;
-  Line2: string;
-  City: string;
-  State: string;
-  PostalCode: string;
+  line1: string;
+  line2: string;
+  city: string;
+  state: string;
+  postalCode: string;
 }
 
 export interface Customer {
-  CustomerID: number;
-  Name: string;
-  Email: string;
-  Phone: string;
+  customerID: number;
+  name: string;
+  email: string;
+  phone: string;
 }
 
 export interface Pizza {
-  Description: string;
-  Price: number;
+  description: string;
+  price: number;
 }
 
 export interface PizzaOrder {
-  OrderNumber: string;
-  Customer: Customer;
-  Items: Pizza[];
-  IsDelivery: boolean;
-  Address: Address;
+  orderNumber: string;
+  customer: Customer;
+  items: Pizza[];
+  isDelivery: boolean;
+  address: Address;
 }
 
 export interface Distance {
-  Kilometers: number;
+  kilometers: number;
 }
 
 export interface Bill {
-  CustomerID: number;
-  OrderNumber: string;
-  Description: string;
-  Amount: number;
+  customerID: number;
+  orderNumber: string;
+  description: string;
+  amount: number;
 }
 
 export interface OrderConfirmation {
-  OrderNumber: string;
-  Status: string;
-  ConfirmationNumber: string;
-  BillingTimestamp: number;
-  Amount: number;
+  orderNumber: string;
+  status: string;
+  confirmationNumber: string;
+  billingTimestamp: number;
+  amount: number;
 }

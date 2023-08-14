@@ -1,20 +1,20 @@
-export const TaskQueueName = 'translation-tasks';
+export const TASK_QUEUE_NAME = 'translation-tasks';
 
 export interface TranslationWorkflowInput {
-  Name: string;
-  LanguageCode: string;
+  name: string;
+  languageCode: string;
 }
 
 export interface TranslationWorkflowOutput {
-  HelloMessage: string;
-  GoodbyeMessage: string;
+  helloMessage: string;
+  goodbyeMessage: string;
 }
 
 export interface TranslationActivityInput {
-  Term: string;
-  LanguageCode: string;
+  term: string;
+  languageCode: string;
 }
 
 export interface TranslationActivityOutput {
-  Translation: string;
+  translation: string;
 }

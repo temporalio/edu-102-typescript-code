@@ -1,6 +1,6 @@
 import { TestWorkflowEnvironment } from '@temporalio/testing';
 import { before, describe, it } from 'mocha';
-import { Worker, Runtime, DefaultLogger, LogEntry } from '@temporalio/worker';
+import { Worker } from '@temporalio/worker';
 import { sayHelloGoodbyeWorkflow } from '../workflows';
 import * as activities from '../activities';
 import assert from 'assert';
@@ -9,16 +9,6 @@ describe('SayHelloGoodbye workflow', () => {
   let testEnv: TestWorkflowEnvironment;
 
   before(async () => {
-    try {
-      Runtime.install({
-        logger: new DefaultLogger('WARN', (entry: LogEntry) => console.log(`[${entry.level}]`, entry.message)),
-      });
-    } catch (err: any) {
-      if (err.name === 'IllegalStateError') {
-        console.log('Logger is already configured');
-      }
-    }
-
     testEnv = await TestWorkflowEnvironment.createTimeSkipping();
   });
 
@@ -30,8 +20,8 @@ describe('SayHelloGoodbye workflow', () => {
     const { client, nativeConnection } = testEnv;
 
     const workflowInput = {
-      Name: 'Pierre',
-      LanguageCode: 'fr',
+      name: 'Pierre',
+      languageCode: 'fr',
     };
 
     const worker = await Worker.create({
@@ -41,14 +31,14 @@ describe('SayHelloGoodbye workflow', () => {
       activities,
     });
 
-    await worker.runUntil(async () => {
-      const result = await client.workflow.execute(sayHelloGoodbyeWorkflow, {
+    const result = await worker.runUntil(
+      client.workflow.execute(sayHelloGoodbyeWorkflow, {
         args: [workflowInput],
         workflowId: 'test',
         taskQueue: 'test',
-      });
-      assert.equal(result.HelloMessage, 'Bonjour, Pierre');
-      assert.equal(result.GoodbyeMessage, 'Au revoir, Pierre');
-    });
+      })
+    );
+    assert.equal(result.helloMessage, 'Bonjour, Pierre');
+    assert.equal(result.goodbyeMessage, 'Au revoir, Pierre');
   });
 });

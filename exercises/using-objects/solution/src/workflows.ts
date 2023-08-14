@@ -1,12 +1,6 @@
 import { proxyActivities } from '@temporalio/workflow';
-// Only import the activity types
 import type * as activities from './activities';
-import {
-  TranslationActivityInput,
-  TranslationActivityOutput,
-  TranslationWorkflowInput,
-  TranslationWorkflowOutput,
-} from './shared';
+import { TranslationWorkflowInput, TranslationWorkflowOutput } from './shared';
 
 const { translateTerm } = proxyActivities<typeof activities>({
   startToCloseTimeout: '45 seconds',
@@ -14,26 +8,21 @@ const { translateTerm } = proxyActivities<typeof activities>({
 
 /** A workflow that simply calls an activity */
 export async function sayHelloGoodbyeWorkflow(input: TranslationWorkflowInput): Promise<TranslationWorkflowOutput> {
-  const helloInput: TranslationActivityInput = {
-    Term: 'Hello',
-    LanguageCode: input.LanguageCode,
+  const helloInput = {
+    term: 'Hello',
+    languageCode: input.languageCode,
   };
 
-  const goodbyeInput: TranslationActivityInput = {
-    Term: 'Goodbye',
-    LanguageCode: input.LanguageCode,
+  const goodbyeInput = {
+    term: 'Goodbye',
+    languageCode: input.languageCode,
   };
 
-  const helloResult: TranslationActivityOutput = await translateTerm(helloInput);
-  const goodbyeResult: TranslationActivityOutput = await translateTerm(goodbyeInput);
+  const helloResult = await translateTerm(helloInput);
+  const goodbyeResult = await translateTerm(goodbyeInput);
 
-  const helloMessage = `${helloResult.Translation}, ${input.Name}`;
-  const goodbyeMessage = `${goodbyeResult.Translation}, ${input.Name}`;
+  const helloMessage = `${helloResult.translation}, ${input.name}`;
+  const goodbyeMessage = `${goodbyeResult.translation}, ${input.name}`;
 
-  const output: TranslationWorkflowOutput = {
-    HelloMessage: helloMessage,
-    GoodbyeMessage: goodbyeMessage,
-  };
-
-  return output;
+  return { helloMessage, goodbyeMessage };
 }

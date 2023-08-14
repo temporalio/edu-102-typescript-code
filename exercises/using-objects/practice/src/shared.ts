@@ -1,13 +1,13 @@
-export const TaskQueueName = 'translation-tasks';
+export const TASK_QUEUE_NAME = 'translation-tasks';
 
 export interface TranslationWorkflowInput {
-  Name: string;
-  LanguageCode: string;
+  name: string;
+  languageCode: string;
 }
 
 export interface TranslationWorkflowOutput {
-  HelloMessage: string;
-  GoodbyeMessage: string;
+  helloMessage: string;
+  goodbyeMessage: string;
 }
 
 // TODO define structs for Activity input and output here
