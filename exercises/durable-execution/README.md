@@ -50,7 +50,7 @@ Before proceeding, make sure that there are no Workers running for this or any p
 1. In one terminal, start the translation microservice by running `npm run service`.
 2. In another terminal, start the Worker by running `npm start`
 3. In another terminal, start a second Worker by running `npm start`
-4. In another terminal, execute the Workflow by running `go run start/main.go Tatiana sk` (replace `Tatiana` with your first name) 
+4. In another terminal, execute the Workflow by running `npm run workflow Tatiana sk` (replace `Tatiana` with your first name) 
 5. Observe the output in the terminal windows used by each worker. 
 6. 	As soon as you see a log message in one of the Worker terminals indicating that it has started the Timer, press Ctrl-C in that window to kill that Worker process.
 7. Switch to the terminal window for the other Worker process. Within a few seconds, you should observe new output, indicating that it has resumed execution of the Workflow.
@@ -63,9 +63,3 @@ Since you added logging code to the Workflow and Activity code, take a moment to
 The microservice for this exercise logs each successful translation, and if you look at its terminal window, you will see that the service only translated Hello (the first Activity) once, even though the Worker was killed after this translation took place. In other words, Temporal did not re-execute the completed Activity when it restored the state of the Workflow Execution. 
 
 ### This is the end of the exercise.
-
-
-## (Optional) Integrate a Third-Party Logging Package 
-If you have time and would like an additional challenge, use the code in the [zapadapter](https://github.com/temporalio/samples-go/tree/main/zapadapter) subdirectory of the Temporal `go-samples` repository to integrate the Zap logging package into the code for this exercise.
-
-Please note that, since this is an optional part of the exercise, the `solution` directory does not include this integration.

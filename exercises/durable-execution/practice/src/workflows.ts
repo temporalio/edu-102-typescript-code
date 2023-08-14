@@ -2,12 +2,7 @@
 import { proxyActivities } from '@temporalio/workflow';
 // Only import the activity types
 import type * as activities from './activities';
-import {
-  TranslationActivityInput,
-  TranslationActivityOutput,
-  TranslationWorkflowInput,
-  TranslationWorkflowOutput,
-} from './shared';
+import { TranslationWorkflowInput, TranslationWorkflowOutput } from './shared';
 
 const { translateTerm } = proxyActivities<typeof activities>({
   startToCloseTimeout: '45 seconds',

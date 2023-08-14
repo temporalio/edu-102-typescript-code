@@ -1,9 +1,6 @@
-import { proxyActivities, sleep } from '@temporalio/workflow';
-import { proxySinks, LoggerSinks } from '@temporalio/workflow';
+import { proxyActivities, log, sleep } from '@temporalio/workflow';
 import type * as activities from './activities';
-import { Bill, Distance, OrderConfirmation, PizzaOrder } from './shared';
-
-const { defaultLogger } = proxySinks<LoggerSinks>();
+import { Distance, OrderConfirmation, PizzaOrder } from './shared';
 
 const { sendBill, getDistance } = proxyActivities<typeof activities>({
   startToCloseTimeout: '5 seconds',
@@ -23,7 +20,7 @@ export async function pizzaWorkflow(order: PizzaOrder): Promise<OrderConfirmatio
   try {
     distance = await getDistance(order.address);
   } catch (e) {
-    defaultLogger.error('Unable to get distance', {});
+    log.error('Unable to get distance', {});
     throw e;
   }
 
@@ -44,7 +41,7 @@ export async function pizzaWorkflow(order: PizzaOrder): Promise<OrderConfirmatio
   try {
     return await sendBill(bill);
   } catch (e) {
-    defaultLogger.error('Unable to bill customer', {});
+    log.error('Sleeping between translation calls', {});
     throw e;
   }
 }

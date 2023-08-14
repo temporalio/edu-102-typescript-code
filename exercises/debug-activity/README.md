@@ -123,9 +123,9 @@ layout.
 2. Open the `src/mocha/activity_test.ts` file in the editor
 3. Add a new test by copying the existing `sends a bill for a typical order` test
    function and renaming the new function as `fails to send bill with negative amount`, and then make the following changes to it:
-   * Change the `Description` to `5 large cheese pizzas`
-   * Change the `Amount` to `6500` ($65)
-   * Change the comment next to the `Amount` field to say 
+   * Change the `description` to `5 large cheese pizzas`
+   * Change the `amount` to `6500` ($65)
+   * Change the comment next to the `amount` field to say 
      `amount qualifies for discount`
    * Change the expected price in the `assert.equals` statement to `6000`, 
      which is the $65 amount minus the $5 discount.
@@ -161,7 +161,7 @@ in the Workflow code, rather than in an Activity, since that is typically
 not prone to failure and unlikely to affect whether the Workflow executes 
 in a deterministic manner. This exercise implemented it in the Activity, 
 since you can deploy a fix to Activity code without a risk of causing a 
-non-deterministic error. Later in this course, you'll learn how to safely 
+non-deterministic error. Later in this course, you'll safely 
 deploy changes to Workflow Definitions.
 
 ### This is the end of the exercise.

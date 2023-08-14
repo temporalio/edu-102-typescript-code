@@ -54,12 +54,11 @@ function createPizzaOrder(): PizzaOrder {
     price: 1200,
   };
 
-  const p3: Pizza = {
-    description: 'Medium, with extra cheese',
-    price: 1300,
-  };
+	// TODO: define a struct representing an additional pizza
 
-  const items: Pizza[] = [p1, p2, p3];
+	// TODO: add the variable for that struct to this array
+
+  const items: Pizza[] = [p1, p2];
 
   const order: PizzaOrder = {
     orderNumber: 'Z1238',

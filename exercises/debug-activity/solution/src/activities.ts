@@ -1,7 +1,11 @@
 import { Address, Bill, Distance, OrderConfirmation } from './shared';
 
 export async function getDistance(address: Address): Promise<Distance> {
-  console.log('getDistance invoked; determining distance to customer address');
+  import * as activity from '@temporalio/activity';
+
+  const context = activity.Context.current();
+
+  context.log.info('getDistance invoked; determining distance to customer address', {});
 
   // this is a simulation, which calculates a fake (but consistent)
   // distance for a customer address based on its length. The value
@@ -16,18 +20,19 @@ export async function getDistance(address: Address): Promise<Distance> {
     kilometers
   };
 
-  console.log('GetDistance complete', 'Distance', distance.kilometers);
+  context.log.info('GetDistance complete', {distance})
   return distance;
 }
 
 export async function sendBill(bill: Bill): Promise<OrderConfirmation> {
-  console.log('sendBill invoked', 'Customer', bill.customerID, 'Amount', bill.amount);
+  const context = activity.Context.current();
+  context.log.info('sendBill invoked', {'Customer': bill.customerID, 'Amount': bill.amount} );
 
   let chargeAmount = bill.amount;
 
   // This month's special offer: Get $5 off all orders over $30
   if (bill.amount > 3000) {
-    console.log('Applying discount');
+    context.log.info('Applying discount');
 
     chargeAmount -= 500; // reduce amount charged by 500 cents
   }
@@ -48,7 +53,7 @@ export async function sendBill(bill: Bill): Promise<OrderConfirmation> {
     amount: chargeAmount,
   };
 
-  console.log('sendBill complete', 'ConfirmationNumber', confirmation.confirmationNumber);
+  context.log.info("sendBill complete", {confirmation})
 
   return confirmation;
 }

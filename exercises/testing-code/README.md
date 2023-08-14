@@ -1,8 +1,8 @@
 # Exercise 3: Testing the Translation Workflow
 During this exercise, you will
 
-* Run a unit test provided for the `TranslateTerm` Activity
-* Develop and run your own unit test for the `TranslateTerm` Activity
+* Run a unit test provided for the `translateTerm` Activity
+* Develop and run your own unit test for the `translateTerm` Activity
 * Write assertions for a Workflow test 
 * Uncover, diagnose, and fix a bug in the Workflow Definition
 * Observe the time-skipping feature in the Workflow test environment
@@ -14,10 +14,10 @@ the complete version in the `solution` subdirectory.
 
 ## Part A: Running a Test
 
-We have provided a unit test for the `TranslateTerm` Activity
+We have provided a unit test for the `translateTerm` Activity
 to get you started. This test verifies that the Activity correctly 
 translates the term "Hello" to German. Take a moment to study the 
-test, which you'll find in the `activity_test.go` file. Since the 
+test, which you'll find in the `src/mocha/activities.test.ts` file. Since the 
 test runs the Activity, which in turn calls the microservice to do 
 the translation, you'll begin by starting that.
 
@@ -47,7 +47,7 @@ returns the appropriate error when called with an invalid language code.
 ```ts
   it('fails to translate with bad language code', async () => {
     const env = new MockActivityEnvironment();
-    const input: TranslationActivityInput = {
+    const input = {
       Term:         "Hello",
       LanguageCode: "xq",
     };
@@ -66,7 +66,7 @@ following steps:
 
 1. Edit the `src/mocha/activites.test.ts` file
 3. Copy the entire `TestFailedTranslateActivityBadLanguageCode` function
-   provided above and paste it at the bottom of the `activities.test.ts` file 
+   provided above and paste it at the bottom of the `src/mocha/activities.test.ts` file 
 4. Save the changes
 5. Run `npm test` again to run this new test, in addition to the others
 
@@ -76,8 +76,8 @@ following steps:
 1. Edit the `src/mocha/workflows.test.ts` file
 2. Remove the first and last line of the file to uncomment the test.
 4. Add assertions for the following conditions
-   * The `HelloMessage` field in the result is `Bonjour, Pierre`
-   * The `GoodbyeMessage` field in the result is `Au revoir, Pierre`
+   * The `helloMessage` field in the result is `Bonjour, Pierre`
+   * The `goodbyeMessage` field in the result is `Au revoir, Pierre`
 5. Save your changes
 6. Run `npm test`. This will fail, due to a bug in the Workflow Definition.
 7. Find and fix the bug in the Workflow Definition
@@ -108,18 +108,18 @@ continue with the following steps.
 2. Edit the `src/mocha/workflows-mocks.test.ts` file
 3. Add an import for `sinon` with `import sinon from 'sinon';` 
 4. Rename the test function to `it('successfully completes French translation with a mocked call', async () => {`
-5. Make the following changes between where the struct representing
+5. Make the following changes between where the object representing
    workflow input is defined and where the Worker is defined:
    * Create and populate an instance of the `TranslationActivityInput`
-     struct to represent input passed to the Activity when translating 
+     object to represent input passed to the Activity when translating 
      the greeting
    * Create and populate an instance of the `TranslationActivityOutput`
-     struct to represent output returned by the Activity when translating 
+     object to represent output returned by the Activity when translating 
      the greeting
-   * Repeat the above three steps, this time creating structs for the goodbye message.
+   * Repeat the above three steps, this time creating objects for the goodbye message.
    * Use Sinon to create a mock that represents the `TranslateTerm` Activity, 
-     which will return the output struct you created when called 
-     with the input struct you created:  `const translateTermMock = sinon.stub();`
+     which will return the output object you created when called 
+     with the input object you created:  `const translateTermMock = sinon.stub();`
    * Add the following two lines to return mock results for the translations:
        `translateTermMock.withArgs(helloInput).resolves(helloOutput);`
        `translateTermMock.withArgs(goodbyeInput).resolves(goodbyeOutput);`

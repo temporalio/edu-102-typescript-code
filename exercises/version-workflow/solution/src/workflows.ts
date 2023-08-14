@@ -2,7 +2,6 @@ import { patched } from '@temporalio/workflow';
 import { proxyActivities, sleep, log } from '@temporalio/workflow';
 // Only import the activity types
 import type * as activities from './activities';
-import { ChargeInput } from './shared';
 import { CustomerInfo } from './customerdb';
 
 const { sendThankYouToCustomer, chargeCustomer } = proxyActivities<typeof activities>({

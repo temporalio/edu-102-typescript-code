@@ -16,10 +16,10 @@ Once you're ready to implement something similar for the Activity, continue with
 
 1. Edit the `src/shared.ts` file
 2. Define an Interface called `TranslationActivityInput` to use as an input parameter. 
-   1. Define a field named `Term` of type `string`
-   2. Define a field named `LanguageCode` of type `string`
+   1. Define a field named `term` of type `string`
+   2. Define a field named `languageCode` of type `string`
 3. Define an Interface called `TranslationActivityOutput` to use for the result
-   1. Define a field named `Translation` of type `string`
+   1. Define a field named `translation` of type `string`
 4. Save your changes
 
 
@@ -29,7 +29,7 @@ Now that you have defined the interfaces, you must update the Activity code to u
 1. Edit the `activities.ts` file
 2. Replace the two input parameters in the `translateTerm` function with the object you defined as input
 3. Replace the output type (string) in the `translateTerm` function with the name of the interface you defined as output
-4. At the end of the function, create a `TranslationActivityOutput{}` object and populate its `Translation` field with the `content` variable, which holds the translation returned in the microservice call. 
+4. At the end of the function, create an object that implements the `TranslationActivityOutput{}` interface  and populate its `translation` field with the `content` variable, which holds the translation returned in the microservice call. 
 5. Return the object created in the previous step
 6. Save your changes
 
@@ -39,7 +39,7 @@ Now that you have defined the interfaces, you must update the Activity code to u
 You've now updated the Activity code to use the structs. The next step is to update the Workflow code to use these structs where it passes input to the Activity and access its return value.
 
 1. Edit the `workflow.go` file
-2. Add a new line to define a `TranslationActivityInput` object, populating it with the two fields (term and language code) currently passed as input to the first `translateTerm` call
+2. Add a new line to define an object that implements `TranslationActivityInput`, populating it with the two fields (term and language code) currently passed as input to the first `translateTerm` call
 3. Change the variable type used to access the result the first call to `translateTerm` from `string` to `TranslationActivityOutput`
 4. Change that first `translateTerm` call to use the object as its input instead of the two parameters it now uses
 5. Update the `helloMessage` string so that it is based on the `Translation` field from the Activity output struct
@@ -68,6 +68,4 @@ It's common for a single Workflow Definition to be executed multiple times, each
 * `zu`: Zulu
 
 
-
 ### This is the end of the exercise.
-

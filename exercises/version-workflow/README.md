@@ -41,8 +41,8 @@ the complete version in the `solution` subdirectory.
 5. In the next section, you will make and deploy an incompatible 
    change, causing a non-deterministic error for an open execution.
    To allow time for you to do these things, edit the `src/workflows.ts` 
-   file and change the duration in the `await Sleep` call from 
-   3 seconds to 90 seconds.
+   file and change the duration in the `await sleep` call from 
+   `3 seconds` to `90 seconds`.
 6. Save your change to the `src/workflows.ts` file and exit the editor
 7. Restart the Worker by pressing Ctrl-C in the terminal window
    from step 1 and running the `npm start` command again
@@ -85,7 +85,6 @@ correspond to the Events that were generated when the Worker ran the
 original code before the restart, it is unable to recover the state 
 and responds by throwing the non-deterministic error you see.
 
-
 ## Part C: Use the Workflow Replayer to Test Compatibility
 
 1. In the Web UI, navigate to the detail page for the Workflow 
@@ -116,13 +115,13 @@ Just above the loop, where the `sendThankYouToCustomer` call was prior to
 the change, add the following code:
 
 ```ts
-  if (!patched('version-2')) {
+  if (!patched('MovedThankYouAfterLoop')) {
     await sendThankYouToCustomer(input)
   }
 ```
 
 This establishes a logical branch for code execution, identified 
-by the user-defined Patch ID `version-2`. 
+by the user-defined Patch ID `MovedThankYouAfterLoop`. 
 
 Now wrap the code you previously moved after the loop in a
 conditional statement that tests if `patched` is equal to
@@ -135,7 +134,7 @@ Now do the following tasks to complete the exercise:
    bottom of the loop back to 3 seconds. This is unrelated to
    versioning, but will help you see the results more quickly.
 2. Run `npm test` again. You should find it succeeds this time,
-   since you've used the `Patching` API to restore compatibility with
+   since you've used the Patching API to restore compatibility with
    the previous execution.
 3. Restart the Worker by pressing `Ctrl-C` in the terminal
    window where you started it and then running the `npm start` command again.
@@ -153,6 +152,4 @@ Now do the following tasks to complete the exercise:
     the top of the page. You should find that the Workflow Execution 
     completes successfully within the next 30 seconds.
 
-
 ### This is the end of the exercise.
-
