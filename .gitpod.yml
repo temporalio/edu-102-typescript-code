@@ -1,37 +1,39 @@
-image: gitpod/workspace-full:2023-01-16-03-31-28
 tasks:
   - name: Set up aliases
     init: cp .bash_aliases ~/.bash_aliases   # ensure new terminals also have access to tctl
-  - name: Worker
+  - name: Temporal Local Development Server
     init: |
-      pushd temporal-server
-      docker-compose pull
-      popd
+      curl -sSf https://temporal.download/cli.sh | sh
     command: |
-      gp sync-done dockerpull
       echo "waiting for server...."
-      gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
       clear
-      echo "Use this terminal to start your worker."
-      source /workspace/edu-102-typescript-code/.bash_aliases
+      source /workspace/edu-101-typescript-code/.bash_aliases
+      export TEMPORAL_CORS_ORIGINS=http://localhost:3000
+      export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
+      temporal server start-dev --ui-port 8080
+  - name: Worker
+    command: |
+      gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
+      source /workspace/edu-101-java-code/.bash_aliases
+      clear
+      echo "Use this terminal to run your Worker"
+    openMode: tab-after
   - name: Terminal
     command: |
       gp open README.md
+      source /workspace/edu-101-typescript-code/.bash_aliases
       clear
       echo "Use this terminal to run commands.."
-      source /workspace/edu-102-typescript-code/.bash_aliases
     openMode: split-right
-  - name: Temporal Local Development Server
+  - name: Microservice
     command: |
-      gp sync-await dockerpull
-      cd temporal-server
-      docker-compose up
-    openMode: tab-after
+      source /workspace/edu-101-typescript-code/.bash_aliases
+      clear
+      echo "Use this terminal to start your microservice in Exercise 3"
+    openMode: split-right
+
 
 ports:
-  - name: postgres
-    port: 5432
-    onOpen: ignore
   - name: Temporal server
     port: 7233
     onOpen: ignore
@@ -40,9 +42,9 @@ ports:
     description: New (v2) Temporal Web UI
     onOpen: ignore
     visibility: private
-  - name: Translation Service
+  - name: Greeting Service
     description: Local microservice used in exercises
-    port: 9998
+    port: 9999
     onOpen: ignore
     visibility: private
 
@@ -54,8 +56,3 @@ vscode:
     - vscjava.vscode-java-test
     - vscjava.vscode-java-debug
     - wingrunr21.vscode-ruby
-    - ms-toolsai.jupyter
-    - ms-toolsai.jupyter-keymap
-    - ms-toolsai.jupyter-renderers
-    - ms-toolsai.vscode-jupyter-cell-tags
-    - ms-toolsai.vscode-jupyter-slideshow
