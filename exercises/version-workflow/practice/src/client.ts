@@ -1,6 +1,5 @@
 import { Connection, Client } from '@temporalio/client';
 import { loanProcessingWorkflow } from './workflows';
-import { nanoid } from 'nanoid';
 import { customerDB } from './customerdb';
 
 import { TaskQueueName } from './shared';
@@ -14,7 +13,7 @@ async function run() {
   const customerID = process.argv[2];
 
   const db = customerDB();
-  const customerInfo = db.Get(customerID);
+  const customerInfo = db.get(customerID);
   if (!customerInfo) {
     console.log('Customer not found');
     process.exit(1);
@@ -27,16 +26,13 @@ async function run() {
   const handle = await client.workflow.start(loanProcessingWorkflow, {
     args: [customerInfo],
     taskQueue: TaskQueueName,
-    workflowId: 'loan-workflow-' + nanoid(),
+    workflowId: 'loan-processing-workflow-customer-' + customerInfo.customerID,
   });
 
   console.log(`Started workflow ${handle.workflowId}`);
 
-  const data = await handle.result();
+  const output = await handle.result();
 
-  const output = JSON.stringify(data);
-
-  // optional: wait for client result
   console.log(output);
 }
 

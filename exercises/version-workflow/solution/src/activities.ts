@@ -9,17 +9,17 @@ export async function chargeCustomer(input: ChargeInput): Promise<string> {
   context.log.info(
     '*** Charging customer ***' +
       'CustomerID: ' +
-      input.CustomerID +
+      input.customerID +
       'Amount: ' +
-      input.Amount +
+      input.amount +
       'PeriodNumber: ' +
-      input.PeriodNumber +
+      input.periodNumber +
       'NumberOfPeriods: ' +
-      input.NumberOfPeriods
+      input.numberOfPeriods
   );
 
   // just pretend that we charged them
-  const confirmation = `Charged ${input.Amount} to customer '${input.CustomerID}'`;
+  const confirmation = `Charged ${input.amount} to customer '${input.customerID}'`;
   return confirmation;
 }
 
@@ -29,12 +29,12 @@ export async function sendThankYouToCustomer(input: CustomerInfo): Promise<strin
   context.log.info(
     '*** Sending thank you message To Customer ***' +
       'CustomerID:' +
-      input.CustomerID +
+      input.customerID +
       'EmailAddress:' +
-      input.EmailAddress
+      input.emailAddress
   );
 
   // just pretend that we emailed them
-  const confirmation = `Sent thank you message to customer '${input.CustomerID}'`;
+  const confirmation = `Sent thank you message to customer '${input.customerID}'`;
   return confirmation;
 }
