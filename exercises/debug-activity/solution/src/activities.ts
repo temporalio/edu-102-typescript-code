@@ -17,16 +17,16 @@ export async function getDistance(address: Address): Promise<Distance> {
   }
 
   const distance = {
-    kilometers
+    kilometers,
   };
 
-  context.log.info('GetDistance complete', {distance})
+  context.log.info('GetDistance complete', { distance });
   return distance;
 }
 
 export async function sendBill(bill: Bill): Promise<OrderConfirmation> {
   const context = activity.Context.current();
-  context.log.info('sendBill invoked', {'Customer': bill.customerID, 'Amount': bill.amount} );
+  context.log.info('sendBill invoked', { Customer: bill.customerID, Amount: bill.amount });
 
   let chargeAmount = bill.amount;
 
@@ -53,7 +53,7 @@ export async function sendBill(bill: Bill): Promise<OrderConfirmation> {
     amount: chargeAmount,
   };
 
-  context.log.info("sendBill complete", {confirmation})
+  context.log.info('sendBill complete', { confirmation });
 
   return confirmation;
 }

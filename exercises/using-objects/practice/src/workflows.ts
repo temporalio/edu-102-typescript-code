@@ -28,5 +28,5 @@ export async function sayHelloGoodbyeWorkflow(input: TranslationWorkflowInput): 
   // TODO Update the `goodbyeResult` parameter to use the Translation field from the Activity output struct
   const goodbyeMessage = `${goodbyeResult}, ${input.name}`;
 
-  return  { helloMessage, goodbyeMessage };
+  return { helloMessage, goodbyeMessage };
 }

@@ -54,9 +54,9 @@ function createPizzaOrder(): PizzaOrder {
     price: 1200,
   };
 
-	// TODO: define a struct representing an additional pizza
+  // TODO: define a struct representing an additional pizza
 
-	// TODO: add the variable for that struct to this array
+  // TODO: add the variable for that struct to this array
 
   const items: Pizza[] = [p1, p2];
 

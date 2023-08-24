@@ -3,7 +3,6 @@ import { TASK_QUEUE_NAME } from './shared';
 import { NativeConnection, Worker } from '@temporalio/worker';
 
 async function run() {
-
   const connection = await NativeConnection.connect({ address: 'localhost:7233' });
 
   const worker = await Worker.create({

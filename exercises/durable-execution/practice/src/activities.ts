@@ -14,21 +14,26 @@ export async function translateTerm(input: TranslationActivityInput): Promise<Tr
   const term = encodeURIComponent(input.term);
 
   const url = `http://localhost:9998/translate?lang=${lang}&term=${term}`;
-  let content = '';
 
   try {
     const response = await axios.get(url);
-    content = response.data;
-
-    // TODO  use the Debug level to log the successful translation and include the
+    const content = response.data;
+    // TODO  use the Debug log level to log the successful translation and include the
     //       translated term as a name-value pair
+    return { translation: content };
   } catch (error: any) {
     if (error.response) {
+      // TODO  use the Error log level to log the failed response and include the
+      //       response status and response data using error.response.status
+      //       and error.response.data
       throw new Error(`HTTP Error ${error.response.status}: ${error.response.data}`);
     } else if (error.request) {
+      // TODO  use the Error log level to log the failed request and include the
+      //       value of error.request
       throw new Error(`Request error:  ${error.request}`);
     }
+    // TODO  use the Error log level to log that something else went wrong with
+    //       the translation. Print out the value of `error`.
+    throw new Error('Something else failed during translation.');
   }
-
-  return { translation: content };
 }

@@ -10,14 +10,13 @@ export async function translateTerm(input: TranslationActivityInput): Promise<Tr
 
   const lang = encodeURIComponent(input.languageCode);
   const term = encodeURIComponent(input.term);
-
   const url = `http://localhost:9998/translate?lang=${lang}&term=${term}`;
-  let content = '';
 
   try {
     const response = await axios.get(url);
-    content = response.data;
+    const content = response.data;
     context.log.debug('Translation successful:', { translation: content });
+    return { translation: content };
   } catch (error: any) {
     if (error.response) {
       context.log.error('Translation request failed:', { status: error.response.status, data: error.response.data });
@@ -26,7 +25,6 @@ export async function translateTerm(input: TranslationActivityInput): Promise<Tr
       context.log.error('Translation request failed:', { request: error.request });
       throw new Error(`Request error:  ${error.request}`);
     }
+    throw new Error('Something else failed during translation.');
   }
-
-  return { translation: content };
 }

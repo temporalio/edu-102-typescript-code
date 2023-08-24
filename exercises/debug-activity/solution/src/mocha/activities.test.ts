@@ -4,7 +4,6 @@ import * as activities from '../activities';
 import assert from 'assert';
 
 describe('activities', () => {
-
   it('successfully gets distance with two line address', async () => {
     const env = new MockActivityEnvironment();
     const input = {
