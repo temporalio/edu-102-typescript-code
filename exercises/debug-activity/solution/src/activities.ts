@@ -1,8 +1,7 @@
 import { Address, Bill, Distance, OrderConfirmation } from './shared';
+import * as activity from '@temporalio/activity';
 
 export async function getDistance(address: Address): Promise<Distance> {
-  import * as activity from '@temporalio/activity';
-
   const context = activity.Context.current();
 
   context.log.info('getDistance invoked; determining distance to customer address', {});
@@ -20,7 +19,7 @@ export async function getDistance(address: Address): Promise<Distance> {
     kilometers,
   };
 
-  context.log.info('GetDistance complete', { distance });
+  context.log.info('getDistance complete', { distance });
   return distance;
 }
 

@@ -19,7 +19,7 @@ export async function getDistance(address: Address): Promise<Distance> {
     kilometers,
   };
 
-  context.log.info('GetDistance complete', { distance });
+  context.log.info('getDistance complete', { distance });
   return distance;
 }
 

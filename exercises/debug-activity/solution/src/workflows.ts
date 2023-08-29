@@ -11,22 +11,24 @@ const { sendBill, getDistance } = proxyActivities<typeof activities>({
 });
 
 export async function pizzaWorkflow(order: PizzaOrder): Promise<OrderConfirmation> {
-  let distance: Distance | undefined = undefined;
   let totalPrice = 0;
+
+  if (order.isDelivery) {
+    let distance: Distance | undefined = undefined;
+
+    try {
+      distance = await getDistance(order.address);
+    } catch (e) {
+      log.error('Unable to get distance', {});
+      throw e;
+    }
+    if (distance.kilometers > 25) {
+      throw new ApplicationFailure('Customer lives too far away for delivery');
+    }
+  }
 
   for (const pizza of order.items) {
     totalPrice += pizza.price;
-  }
-
-  try {
-    distance = await getDistance(order.address);
-  } catch (e) {
-    log.error('Unable to get distance', {});
-    throw e;
-  }
-
-  if (order.isDelivery && distance.kilometers > 25) {
-    throw new ApplicationFailure('Customer lives too far away for delivery');
   }
 
   // We use a short Timer duration here to avoid delaying the exercise
