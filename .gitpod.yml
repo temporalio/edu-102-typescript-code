@@ -1,35 +1,45 @@
 tasks:
-  - name: Set up aliases
-    init: cp .bash_aliases ~/.bash_aliases   # ensure new terminals also have access to tctl
   - name: Temporal Local Development Server
     init: |
+      # ensure new terminals also have access to tctl
+      cp .bash_aliases ~/.bash_aliases
+      # install temporal CLI
       curl -sSf https://temporal.download/cli.sh | sh
+      # install tctl for backwards compat
+      mkdir -p tctl_temp
+      pushd tctl_temp
+      curl -sL -O https://github.com/temporalio/tctl/releases/download/v1.18.0/tctl_1.18.0_linux_amd64.tar.gz
+      tar zxvf tctl_1.18*
+      mv tctl /home/gitpod/.temporalio/bin/tctl
+      chmod +x /home/gitpod/.temporalio/bin/tctl
+      popd
+      rm -rf tctl_temp
     command: |
-      echo "waiting for server...."
-      clear
-      source /workspace/edu-101-typescript-code/.bash_aliases
       export TEMPORAL_CORS_ORIGINS=http://localhost:3000
       export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
-      temporal server start-dev --ui-port 8080
+      echo "waiting for server...."
+      clear
+      source /workspace/edu-102-typescript-code/.bash_aliases
+      /home/gitpod/.temporalio/bin/temporal server start-dev --db-filename your_temporal.db --ui-port 8080
   - name: Worker
     command: |
       gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
-      source /workspace/edu-101-java-code/.bash_aliases
+      source /workspace/edu-102-typescript-code/.bash_aliases
       clear
       echo "Use this terminal to run your Worker"
     openMode: tab-after
-  - name: Terminal
+  - name: Workflows
     command: |
       gp open README.md
       source /workspace/edu-101-typescript-code/.bash_aliases
       clear
-      echo "Use this terminal to run commands.."
+      echo "Use this terminal to run workflows..."
     openMode: split-right
   - name: Microservice
     command: |
       source /workspace/edu-101-typescript-code/.bash_aliases
       clear
-      echo "Use this terminal to start your microservice in Exercise 3"
+      echo "Use this terminal to start the microservice used in various activities."
     openMode: split-right
 
 
