@@ -36,7 +36,7 @@ the complete version in the `solution` subdirectory.
      command from the `practice`  directory:
      `tctl wf show 
      --workflow_id loan-processing-workflow-customer-a100 
-     --print_full > history_for_original_execution.json` 
+     --output_filename history_for_original_execution.json`
      to retrieve a copy. 
 5. In the next section, you will make and deploy an incompatible 
    change, causing a non-deterministic error for an open execution.

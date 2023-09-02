@@ -1,7 +1,9 @@
 import { TestWorkflowEnvironment } from '@temporalio/testing';
 import { before, describe, it } from 'mocha';
-import { Worker } from '@temporalio/worker';
-import fs from 'fs';
+
+// TODO: Uncomment the following lines
+// import { Worker } from '@temporalio/worker';
+// import fs from 'fs';
 
 describe('SayHelloGoodbye workflow', () => {
   let testEnv: TestWorkflowEnvironment;

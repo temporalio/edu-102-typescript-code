@@ -1,6 +1,6 @@
 import { Connection, Client } from '@temporalio/client';
 import { pizzaWorkflow } from './workflows';
-import { Address, Customer, Pizza, PizzaOrder, TASK_QUEUE_NAME } from './shared';
+import { Pizza, PizzaOrder, TASK_QUEUE_NAME } from './shared';
 
 async function run() {
   const connection = await Connection.connect({ address: 'localhost:7233' });

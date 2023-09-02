@@ -1,4 +1,5 @@
-import { patched } from '@temporalio/workflow';
+// TODO: Uncomment the following line
+// import { patched } from '@temporalio/workflow';
 import { proxyActivities, sleep, log } from '@temporalio/workflow';
 // Only import the activity types
 import type * as activities from './activities';

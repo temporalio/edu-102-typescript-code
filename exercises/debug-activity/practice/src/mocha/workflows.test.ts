@@ -1,6 +1,6 @@
 import { TestWorkflowEnvironment } from '@temporalio/testing';
 import { after, afterEach, before, describe, it } from 'mocha';
-import { Worker, Runtime, DefaultLogger, LogEntry } from '@temporalio/worker';
+import { Worker } from '@temporalio/worker';
 import sinon from 'sinon';
 import assert from 'assert';
 import { Pizza, PizzaOrder, TASK_QUEUE_NAME } from '../shared';

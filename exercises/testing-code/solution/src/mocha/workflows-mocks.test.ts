@@ -1,25 +1,14 @@
 import { TestWorkflowEnvironment } from '@temporalio/testing';
-import { after, afterEach, before, it } from 'mocha';
-import { Worker, Runtime, DefaultLogger, LogEntry } from '@temporalio/worker';
+import { afterEach, before, it } from 'mocha';
+import { Worker } from '@temporalio/worker';
 import { sayHelloGoodbyeWorkflow } from '../workflows';
 import assert from 'assert';
 import sinon from 'sinon';
-import { TranslationActivityInput, TranslationActivityOutput, TranslationWorkflowInput } from '../shared';
 
 describe('SayHelloGoodbye workflow', () => {
   let testEnv: TestWorkflowEnvironment;
 
   before(async () => {
-    try {
-      Runtime.install({
-        logger: new DefaultLogger('WARN', (entry: LogEntry) => console.log(`[${entry.level}]`, entry.message)),
-      });
-    } catch (err: any) {
-      if (err.name === 'IllegalStateError') {
-        console.log('Logger is already configured');
-      }
-    }
-
     testEnv = await TestWorkflowEnvironment.createTimeSkipping();
   });
 
