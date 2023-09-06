@@ -12,6 +12,14 @@ Make your changes to the code in the `practice` subdirectory (look for
 the code). If you need a hint or want to verify your changes, look at 
 the complete version in the `solution` subdirectory.
 
+
+## Setup
+
+You'll need three terminal windows for this exercise.
+
+1. In all terminals, change to the `exercises/debug-activity/practice` directory
+2. In one terminal, run `npm install` to install dependencies.
+
 ## Part A: Run the Workflow
 
 In this part of the exercise, you will start two Workers and run the 
@@ -19,10 +27,9 @@ provided Workflow. We recommend that you do not look at the code yet,
 since the next part of this exercise will ask you to determine what it 
 does by using the Web UI to interpret the Event History.
 
-1. Change to the `exercises/debug-activity/practice` directory
-2. Start a Worker by running `npm start` 
-3. In another terminal window, run the above command to start another Worker. 
-4. In another terminal window, run `npm run workflow` to start the Workflow
+1. Start a Worker by running `npm start` 
+2. In another terminal window, run `npm start` to start another Worker. 
+3. In another terminal window, run `npm run workflow` to start the Workflow
 
 ## Part B: Interpret Workflow Execution by Using the Web UI
 

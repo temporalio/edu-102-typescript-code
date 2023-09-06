@@ -12,6 +12,13 @@ Make your changes to the code in the `practice` subdirectory (look for
 the code). If you need a hint or want to verify your changes, look at 
 the complete version in the `solution` subdirectory.
 
+## Setup
+
+You'll need two terminal windows for this exercise.
+
+1. In all terminals, change to the `exercises/testing-code/practice` directory.
+2. In one terminal, run `npm install` to install dependencies.
+
 ## Part A: Running a Test
 
 We have provided a unit test for the `translateTerm` Activity
@@ -21,8 +28,8 @@ test, which you'll find in the `src/mocha/activities.test.ts` file. Since the
 test runs the Activity, which in turn calls the microservice to do 
 the translation, you'll begin by starting that.
 
-1. Open a new terminal and run `npm run service` 
-2. Run the `npm test` command to execute the provided test
+1. In one terminal, run `npm run service` 
+2. In another terminal, run the `npm test` command to execute the provided test
 
 ## Part B: Write and Run Another Test for the Activity
 
@@ -61,15 +68,13 @@ returns the appropriate error when called with an invalid language code.
   });
 ```
 
-Take a moment to study this code, and then continue with the 
-following steps:
+Take a moment to study this code, and then continue with the following steps:
 
 1. Edit the `src/mocha/activites.test.ts` file
 3. Copy the entire `TestFailedTranslateActivityBadLanguageCode` function
    provided above and paste it at the bottom of the `src/mocha/activities.test.ts` file 
 4. Save the changes
 5. Run `npm test` again to run this new test, in addition to the others
-
 
 ## Part D: Test a Workflow Definition
 

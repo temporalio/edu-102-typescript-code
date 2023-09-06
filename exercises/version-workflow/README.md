@@ -13,10 +13,17 @@ Make your changes to the code in the `practice` subdirectory (look for
 the code). If you need a hint or want to verify your changes, look at 
 the complete version in the `solution` subdirectory.
 
+## Setup
+
+You'll need two terminal windows for this exercise.
+
+1. In all terminals, change to the `exercises/version-workflow/practice` directory.
+2. In one terminal, run `npm install` to install dependencies.
+
 ## Part A: Run a Workflow to Completion
 
-1. Run `npm start` in a terminal to start a Worker
-2. Run `npm run workflow a100` in another terminal. This will 
+1. In one terminal, run `npm start` to start the Worker
+2. In a second terminal, run `npm run workflow a100`. This will 
    start a Workflow that processes the loan for customer ID `a100`.
 3. Let this Workflow run to completion. This customer has a loan 
    with 10 payments, and since the Workflow in this exercise uses 
@@ -50,7 +57,6 @@ the complete version in the `solution` subdirectory.
 9. Use the Web UI to verify that the Workflow Execution from the 
    previous step is running before proceeding with the next part
    of this exercise.
-
 
 ## Part B: Deploy an Incompatible Change (without Versioning)
 

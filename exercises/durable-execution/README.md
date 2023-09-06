@@ -9,6 +9,13 @@ During this exercise, you will
 
 Make your changes to the code in the `practice` subdirectory (look for `TODO` comments that will guide you to where you should make changes to the code). If you need a hint or want to verify your changes, look at the complete version in the `solution` subdirectory.
 
+## Setup
+
+You'll need four terminal windows for this exercise.
+
+1. In all terminals, change to the `exercises/durable-execution/practice` directory.
+2. In one terminal, run `npm install` to install dependencies.
+
 ## Part A: Add Logging to the Workflow Code
 
 1. Edit the `src/workflows.ts` file
@@ -46,6 +53,9 @@ You will now add a Timer between the two Activity calls in the Workflow Definiti
 It is typical to run Temporal applications using two or more Worker processes. Not only do additional Workers allow the application to scale, it also increases availability since another Worker can take over if a Worker crashes during Workflow Execution. You'll see this for yourself now and will learn more about how Temporal achieves this as you continue through the course.
 
 Before proceeding, make sure that there are no Workers running for this or any previous exercise. Also, please read through all of these instructions before you begin, so that you'll know when and how to react.
+
+
+In each terminal, ensure you are in the `exercises/durable-execution/practice` directory.
 
 1. In one terminal, start the translation microservice by running `npm run service`.
 2. In another terminal, start the Worker by running `npm start`
