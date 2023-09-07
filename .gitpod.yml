@@ -1,8 +1,6 @@
 tasks:
   - name: Temporal Local Development Server
     init: |
-      # ensure new terminals also have access to tctl
-      cp .bash_aliases ~/.bash_aliases
       # install temporal CLI
       curl -sSf https://temporal.download/cli.sh | sh -s - --dir /workspace
       # install tctl for backwards compat
@@ -15,6 +13,8 @@ tasks:
       popd
       rm -rf tctl_temp
     command: |
+      # ensure new terminals also have access to tctl
+      cp .bash_aliases ~/.bash_aliases
       export TEMPORAL_CORS_ORIGINS=http://localhost:3000
       export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
       echo "waiting for server...."
