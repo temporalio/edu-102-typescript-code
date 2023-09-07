@@ -4,14 +4,14 @@ tasks:
       # ensure new terminals also have access to tctl
       cp .bash_aliases ~/.bash_aliases
       # install temporal CLI
-      curl -sSf https://temporal.download/cli.sh | sh
+      curl -sSf https://temporal.download/cli.sh | sh -s - --dir /workspace
       # install tctl for backwards compat
       mkdir -p tctl_temp
       pushd tctl_temp
       curl -sL -O https://github.com/temporalio/tctl/releases/download/v1.18.0/tctl_1.18.0_linux_amd64.tar.gz
       tar zxvf tctl_1.18*
-      mv tctl /home/gitpod/.temporalio/bin/tctl
-      chmod +x /home/gitpod/.temporalio/bin/tctl
+      mv tctl /workspace/bin/tctl
+      chmod +x /workspace/bin/tctl
       popd
       rm -rf tctl_temp
     command: |
