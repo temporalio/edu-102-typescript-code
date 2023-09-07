@@ -20,7 +20,7 @@ tasks:
       echo "waiting for server...."
       clear
       source /workspace/edu-102-typescript-code/.bash_aliases
-      /home/gitpod/.temporalio/bin/temporal server start-dev --db-filename your_temporal.db --ui-port 8080
+      /workspace/bin/temporal server start-dev --db-filename your_temporal.db --ui-port 8080
   - name: Worker
     command: |
       gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
