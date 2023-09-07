@@ -19,25 +19,25 @@ tasks:
       export TEMPORAL_NOTIFY_ON_NEW_VERSION=false
       echo "waiting for server...."
       clear
-      source /workspace/edu-102-typescript-code/.bash_aliases
+      source .bash_aliases
       /home/gitpod/.temporalio/bin/temporal server start-dev --db-filename your_temporal.db --ui-port 8080
   - name: Worker
     command: |
       gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
-      source /workspace/edu-102-typescript-code/.bash_aliases
       clear
+      source .bash_aliases
       echo "Use this terminal to run your Worker"
     openMode: tab-after
   - name: Workflows
     command: |
       gp open README.md
-      source /workspace/edu-101-typescript-code/.bash_aliases
+      source .bash_aliases
       clear
       echo "Use this terminal to run workflows..."
     openMode: split-right
   - name: Microservice
     command: |
-      source /workspace/edu-101-typescript-code/.bash_aliases
+      source .bash_aliases
       clear
       echo "Use this terminal to start the microservice used in various activities."
     openMode: split-right
