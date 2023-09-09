@@ -1,6 +1,7 @@
 import { MockActivityEnvironment } from '@temporalio/testing';
 import { describe, it } from 'mocha';
 import * as activities from '../activities';
+import { Distance, OrderConfirmation } from '../shared';
 import assert from 'assert';
 
 describe('activities', () => {
@@ -13,7 +14,7 @@ describe('activities', () => {
       state: 'CA',
       postalCode: '94103',
     };
-    const result = await env.run(activities.getDistance, input);
+    const result: Distance = await env.run(activities.getDistance, input);
     assert.equal(result.kilometers, 20);
   });
 
@@ -26,7 +27,7 @@ describe('activities', () => {
       state: 'CA',
       postalCode: '94103',
     };
-    const result = await env.run(activities.getDistance, input);
+    const result: Distance = await env.run(activities.getDistance, input);
     assert.equal(result.kilometers, 8);
   });
 
@@ -38,7 +39,7 @@ describe('activities', () => {
       description: '2 large cheese pizzas',
       amount: 2600,
     };
-    const confirmation = await env.run(activities.sendBill, input);
+    const confirmation: OrderConfirmation = await env.run(activities.sendBill, input);
     assert.equal(confirmation.orderNumber, input.orderNumber);
     assert.equal(confirmation.amount, input.amount);
   });
@@ -51,7 +52,7 @@ describe('activities', () => {
       description: '5 large cheese pizzas',
       amount: 6500,
     };
-    const confirmation = await env.run(activities.sendBill, input);
+    const confirmation: OrderConfirmation = await env.run(activities.sendBill, input);
     assert.equal(confirmation.orderNumber, input.orderNumber);
     assert.equal(confirmation.amount, 6000);
   });
