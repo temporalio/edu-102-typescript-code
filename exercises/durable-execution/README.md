@@ -28,19 +28,17 @@ You'll need four terminal windows for this exercise.
    2. It should also include a name-value pair for the language code passed as input
 4. Save your changes
 
-
 ## Part B: Add Logging to the Activity Code
 
 1. Edit the `src/activities.ts` file.
 2. Add an import to the top of the file so you can access the logger: `import * as activty from @temporalio/activity` package.
-3. Define an Activity logger at the top of the Activity function.
-4. Insert a logging statement at the Info level just after this, so you'll know when the Activity is invoked. 
+3. Define a new `context` variable at the top of the Activity function and assign it `activity.Context.current()` to get access to the logger.
+4. Insert a logging statement using `context.log` at the Info level just after this, so you'll know when the Activity is invoked. 
    1. Include the term being translated and the language code as name-value pairs.
 4. Optionally, add log statements at the Error level anywhere that the Activity returns an error.
 5. Near the bottom of the function, use the Debug level to log the successful translation
 	1. Include the translated term as a name-value pair.
 6. Save your changes.
-
 
 ## Part C: Add a Timer to the Workflow
 You will now add a Timer between the two Activity calls in the Workflow Definition, which will make it easier to observe durable execution in the next section.
@@ -48,12 +46,13 @@ You will now add a Timer between the two Activity calls in the Workflow Definiti
 1. After the statement where `helloMessage` is defined, but before the statement where `goodbyeInput` is defined, add a new statement that logs the message `Sleeping between translation calls` at the Debug level.
 2. Just after the new log statement, use `await sleep("10 seconds");` to set a Timer for 10 seconds.
 
-
 ## Part D: Observe Durable Execution
 It is typical to run Temporal applications using two or more Worker processes. Not only do additional Workers allow the application to scale, it also increases availability since another Worker can take over if a Worker crashes during Workflow Execution. You'll see this for yourself now and will learn more about how Temporal achieves this as you continue through the course.
 
 Before proceeding, make sure that there are no Workers running for this or any previous exercise. Also, please read through all of these instructions before you begin, so that you'll know when and how to react.
 
+1. Open `src/worker.ts`
+2. Observe that the logger is customized to print logs at the `DEBUG` level rather than the default `INFO` level.
 
 In each terminal, ensure you are in the `exercises/durable-execution/practice` directory.
 
