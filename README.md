@@ -1,8 +1,7 @@
 # Code Repository for Temporal 102 (TypeScript)
-This repository provides code used for exercises and demonstrations
-included in the TypeScript version of the 
-[Temporal 102](https://learn.temporal.io/courses/temporal_102) 
-training course.
+This repository provides code used for exercises and demonstrations included in
+the TypeScript version of the [Temporal
+102](https://learn.temporal.io/courses/temporal_102) training course.
 
 ## Hands-On Exercises
 
@@ -24,13 +23,13 @@ Directory Name                         | Description
 ## Reference
 The following links provide additional information that you may find helpful as you work through this course.
 * [General Temporal Documentation](https://docs.temporal.io/)
-* [Temporal TypeScript SDK Documentation](https://pkg.go.dev/go.temporal.io/sdk)
+* [Temporal TypeScript SDK API Documentation](https://typescript.temporal.io)
 * [GitPod Documentation: Troubleshooting](https://www.gitpod.io/docs/troubleshooting)
 
 
 ## Exercise Environment for this Course
-You can launch an exercise environment for this course in GitPod by 
-clicking the button below:
+You can launch an exercise environment for this course in GitPod by clicking
+the following button:
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/temporalio/edu-102-typescript-code)
 
