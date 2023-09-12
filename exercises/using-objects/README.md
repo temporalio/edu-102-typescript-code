@@ -22,7 +22,7 @@ what you've learned to do the same for the Activity.
 
 Before continuing with the steps below, take a moment to look at the code in
 the `src/shared.ts` file to see how the types are defined for the Workflow.
-After this, look at the `workflows.ts` file to see how these values are passed
+After this, look at the `src/workflow.ts` file to see how these values are passed
 in and used in the Workflow code. Finally, look at the `src/client.ts` to see
 how the input parameters are created and passed into the Workflow.
 
