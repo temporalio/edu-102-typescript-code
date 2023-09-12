@@ -22,7 +22,7 @@ what you've learned to do the same for the Activity.
 
 Before continuing with the steps below, take a moment to look at the code in
 the `src/shared.ts` file to see how the types are defined for the Workflow.
-After this, look at the `workflow.go` file to see how these values are passed
+After this, look at the `src/workflow.ts` file to see how these values are passed
 in and used in the Workflow code. Finally, look at the `src/client.ts` to see
 how the input parameters are created and passed into the Workflow.
 
@@ -55,7 +55,7 @@ You've now updated the Activity code to use the structs. The next step is to
 update the Workflow code to use these structs where it passes input to the
 Activity and access its return value.
 
-1. Edit the `workflow.go` file
+1. Edit the `workflows.ts` file
 2. Add a new line to define an object that implements `TranslationActivityInput`, populating it with the two fields (term and language code) currently passed as input to the first `translateTerm` call
 3. Change the variable type used to access the result the first call to `translateTerm` from `string` to `TranslationActivityOutput`
 4. Change that first `translateTerm` call to use the object as its input instead of the two parameters it now uses
