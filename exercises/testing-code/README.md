@@ -71,7 +71,7 @@ returns the appropriate error when called with an invalid language code.
 Take a moment to study this code, and then continue with the following steps:
 
 1. Edit the `src/mocha/activites.test.ts` file
-3. Copy the entire `TestFailedTranslateActivityBadLanguageCode` function
+3. Copy the entire `"fails to translate with bad language code"` function
    provided above and paste it at the bottom of the `src/mocha/activities.test.ts` file 
 4. Save the changes
 5. Run `npm test` again to run this new test, in addition to the others
