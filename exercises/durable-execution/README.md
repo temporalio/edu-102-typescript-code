@@ -31,7 +31,7 @@ You'll need four terminal windows for this exercise.
 ## Part B: Add Logging to the Activity Code
 
 1. Edit the `src/activities.ts` file.
-2. Add an import to the top of the file so you can access the logger: `import * as activty from @temporalio/activity` package.
+2. Add an import to the top of the file so you can access the logger: `import * as activity from @temporalio/activity` package.
 3. Define a new `context` variable at the top of the Activity function and assign it `activity.Context.current()` to get access to the logger.
 4. Insert a logging statement using `context.log` at the Info level just after this, so you'll know when the Activity is invoked. 
    1. Include the term being translated and the language code as name-value pairs.
