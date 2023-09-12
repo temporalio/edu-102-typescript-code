@@ -55,8 +55,8 @@ returns the appropriate error when called with an invalid language code.
   it('fails to translate with bad language code', async () => {
     const env = new MockActivityEnvironment();
     const input = {
-      Term:         "Hello",
-      LanguageCode: "xq",
+      term:         "Hello",
+      languageCode: "xq",
     };
     try {
       await env.run(activities.translateTerm, input);
