@@ -1,7 +1,7 @@
 import { URLSearchParams } from 'url';
 import fetch from "node-fetch";
 
-export async function estimateAge(name: string): Promise<any> {
+export async function estimateAge(name: string): Promise<number> {
   const base = 'https://api.agify.io/?';
   const url = base + new URLSearchParams({ name });
 
