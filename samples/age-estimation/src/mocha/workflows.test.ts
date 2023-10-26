@@ -9,7 +9,7 @@ describe('estimateAge workflow', async () => {
   let testEnv: TestWorkflowEnvironment;
 
   before(async () => {
-    testEnv = await TestWorkflowEnvironment.createTimeSkipping();
+    testEnv = await TestWorkflowEnvironment.createLocal();
   });
 
   after(async () => {

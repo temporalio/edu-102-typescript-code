@@ -28,7 +28,8 @@
     "@temporalio/workflow": "~1.8.0",
     "axios": "^1.4.0",
     "express": "^4.18.2",
-    "nanoid": "3.x"
+    "nanoid": "3.x",
+    "node-fetch": "^2.7.0"
   },
   "devDependencies": {
     "@temporalio/testing": "~1.8.0",
@@ -36,6 +37,7 @@
     "@types/axios": "^0.14.0",
     "@types/mocha": "8.x",
     "@types/node": "^18.11.43",
+    "@types/node-fetch": "^2.6.7",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint": "^7.32.0",
