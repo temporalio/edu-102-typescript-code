@@ -1,7 +1,7 @@
 import { URLSearchParams } from 'url';
 import fetch from "node-fetch";
 
-export async function estimateAge(name: string): Promise<number> {
+export async fußnction estimateAge(name: string): Promise<number> {
   const base = 'https://api.agify.io/?';
   const url = base + new URLSearchParams({ name });
 
@@ -16,3 +16,4 @@ export async function estimateAge(name: string): Promise<number> {
   const parsedResponse = response as EstimatorResponse;
   return parsedResponse.age;
 }
+ß
