@@ -1,11 +1,12 @@
 import { URLSearchParams } from 'url';
-import fetch from "node-fetch";
+import axios from 'axios';
 
-export async fußnction estimateAge(name: string): Promise<number> {
+export async function estimateAge(name: string): Promise<number> {
   const base = 'https://api.agify.io/?';
   const url = base + new URLSearchParams({ name });
 
-  const response = await fetch(url).then(res => res.json())
+  const response = await axios.get(url);
+  const responseBody = response.data;
 
   interface EstimatorResponse {
     age: number;
@@ -13,7 +14,6 @@ export async fußnction estimateAge(name: string): Promise<number> {
     name: string;
   }
 
-  const parsedResponse = response as EstimatorResponse;
+  const parsedResponse: EstimatorResponse = responseBody as EstimatorResponse;
   return parsedResponse.age;
 }
-ß
