@@ -31,7 +31,7 @@ The following links provide additional information that you may find helpful as 
 You can launch an exercise environment for this course in GitPod by clicking
 the following button:
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/temporalio/edu-102-typescript-code)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/temporalio/edu-102-typescript-code-v2)
 
 Alternatively, you can follow 
 [these instructions](https://learn.temporal.io/getting_started/typescript/dev_environment/) to 
