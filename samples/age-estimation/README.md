@@ -6,7 +6,7 @@ which calls a remote API to retrieve this estimation.
 Start the Worker:
 
 ```
-npm run start.watch`
+npm run start.watch
 ```
 
 In addition to the Worker, it also includes a file `src/client.ts` 
