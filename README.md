@@ -7,17 +7,16 @@ the TypeScript version of the [Temporal
 
 Directory Name                     | Exercise
 :--------------------------------- | :-------------------------------------------------------
-`exercises/using-objects`          | [Exercise 1](exercises/using-objects/README.md)
-`exercises/durable-execution`      | [Exercise 2](exercises/durable-execution/README.md)
-`exercises/testing-code`           | [Exercise 3](exercises/testing-code/README.md)
-`exercises/debug-activity`         | [Exercise 4](exercises/debug-activity/README.md)
-`exercises/version-workflow`       | [Exercise 5](exercises/version-workflow/README.md)
+`exercises/durable-execution`      | [Exercise 1](exercises/durable-execution/README.md)
+`exercises/testing-code`           | [Exercise 2](exercises/testing-code/README.md)
+`exercises/debug-activity`         | [Exercise 3](exercises/debug-activity/README.md)
 
 
 ## Examples for Self-Study
 Directory Name                         | Description
 :------------------------------------- | :----------------------------------------------------------------------------------
-`samples/age-estimation`               | [Calls a remote API to estimate a given name](samples/age-estimation)
+`samples/age-estimation`               | [Calls a remote API to estimate age of a person given their name](samples/age-estimation)
+`samples/using-objects-for-data`      | [Demonstrates how objects are passed in as input and output data](samples/using-objects-for-data)
 
 
 ## Reference

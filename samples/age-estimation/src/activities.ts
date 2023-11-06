@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { URLSearchParams } from 'url';
+import axios from 'axios';
 
 export async function estimateAge(name: string): Promise<number> {
   const base = 'https://api.agify.io/?';
@@ -15,6 +15,5 @@ export async function estimateAge(name: string): Promise<number> {
   }
 
   const parsedResponse: EstimatorResponse = responseBody as EstimatorResponse;
-
   return parsedResponse.age;
 }
