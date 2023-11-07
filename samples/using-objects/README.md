@@ -3,16 +3,16 @@
 In this example, you will see how objects are used to represent input and output data of Workflow and Activity Definitions.
 
 
-## Part A: Observing the Defined Structs in Workflows
-This sample provides an improved version of the translation Workflow used in Temporal 101. The Workflow follows the best practice of using structs to represent input parameters and return values. 
+## Part A: Observing the Defined Objects in Workflows
+This sample provides an improved version of the translation Workflow used in Temporal 101. The Workflow follows the best practice of using objects to represent input parameters and return values. 
 
 Look at the code in the `shared.ts` file to see how the objects are defined for the Workflows and Activities. After this, look at the `workflows.ts` file to see how these values are passed in and used in the Workflow code. Finally, look at `client.ts` to see how the input parameters are created and passed into the Workflow.
 
 
-## Part B: Observing the Defined Structs in Activities
+## Part B: Observing the Defined Objects in Activities
 Now let's take a look at how we used objects to represent input and output data in Activity definitions. 
 
-Take a look at the `activities.ts` file to see how the `translateTerm` function takes in the `TranslationActivityInput` struct as an input parameter. Also notice how that function returns a `TranslationActivityOutput` object for the output.
+Take a look at the `activities.ts` file to see how the `translateTerm` function takes in the `TranslationActivityInput` object as an input parameter. Also notice how that function returns a `TranslationActivityOutput` object for the output.
 
 
 ## Part C: Run the Translation Workflow
