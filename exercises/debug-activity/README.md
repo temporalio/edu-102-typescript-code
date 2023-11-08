@@ -127,7 +127,7 @@ layout.
      discount did not write a test case for it. 
      Deploying the untested code is what led to this failure, but 
      writing a test now will help you to verify the fix. 
-2. Open the `src/mocha/activity_test.ts` file in the editor
+2. Open the `src/mocha/activities.test.ts` file in the editor
 3. Add a new test by copying the existing `sends a bill for a typical order` test
    function and renaming the new function as `fails to send bill with negative amount`, and then make the following changes to it:
    * Change the `description` to `5 large cheese pizzas`

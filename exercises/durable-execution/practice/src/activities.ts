@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// TODO impport everything from the @temporalio/activity package as activity
+// TODO import everything from the @temporalio/activity package as activity
 
 import { TranslationActivityInput, TranslationActivityOutput } from './shared';
 
