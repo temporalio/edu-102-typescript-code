@@ -14,7 +14,7 @@ async function run() {
   const handle = await client.workflow.start(pizzaWorkflow, {
     args: [order],
     taskQueue: TASK_QUEUE_NAME,
-    workflowId: `pizza-workflow-order-${order.orderNumber},`,
+    workflowId: `pizza-workflow-order-${order.orderNumber}`,
   });
 
   console.log(`Started workflow ${handle.workflowId}`);
