@@ -3,6 +3,8 @@ This repository provides code used for exercises and demonstrations included in
 the TypeScript version of the [Temporal
 102](https://learn.temporal.io/courses/temporal_102) training course.
 
+It's important to remember that the example code used in this course was designed to support learning a specific aspect of Temporal, not to serve as a ready-to-use template for implementing a production system.
+
 ## Hands-On Exercises
 
 Directory Name                     | Exercise
