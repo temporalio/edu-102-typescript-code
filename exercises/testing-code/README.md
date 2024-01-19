@@ -91,7 +91,7 @@ Take a moment to study this code, and then continue with the following steps:
 There are two things to note about this test.
 
 First, the test completes in under a second, even though the Workflow 
-Definition contains a `sleep` call that adds a 15-second delay 
+Definition contains a `sleep` call that adds a 10-second delay 
 to the Workflow Execution. This is because of the time-skipping feature
 provided by the test environment.
 
@@ -109,7 +109,7 @@ If you have time and would like an additional challenge,
 continue with the following steps.
 
 1. Make a copy of the existing Workflow Test by running 
-   `cp src/mocha/workflows.teest.ts src/mocha/workflows-mocks.test.ts`
+   `cp src/mocha/workflows.test.ts src/mocha/workflows-mocks.test.ts`
 2. Edit the `src/mocha/workflows-mocks.test.ts` file
 3. Add an import for `sinon` with `import sinon from 'sinon';` 
 4. Rename the test function to `it('successfully completes French translation with a mocked call', async () => {`
