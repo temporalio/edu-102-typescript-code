@@ -12,13 +12,13 @@ Make your changes to the code in the `practice` subdirectory (look for
 the code). If you need a hint or want to verify your changes, look at 
 the complete version in the `solution` subdirectory.
 
-
 ## Setup
 
 You'll need three terminal windows for this exercise.
 
-1. In all terminals, change to the `exercises/debug-activity/practice` directory
-2. In one terminal, run `npm install` to install dependencies.
+1. In one terminal, run `temporal server start-dev --ui-port 8080 --db-filename clusterdata.db` to start the Temporal server. For more details on this command, please refer to the `Setting up a Local Development Environment` chapter in the course.
+2. In the other terminals, change to the `exercises/debug-activity/practice` directory
+3. In one terminal, run `npm install` to install dependencies.
 
 ## Part A: Run the Workflow
 
@@ -35,7 +35,7 @@ does by using the Web UI to interpret the Event History.
 
 Open the Web UI and navigate to the detail page for the Workflow 
 Execution you just ran, which has the Workflow Type `pizzaWorkflow` 
-and Workflow ID `pizza-workflow-order-Z1238`).
+and Workflow ID `pizza-workflow-order-Z1238`.
 
 If the detail page still shows a status of Running, wait a few seconds 
 and refresh the page. Once the page shows a status of Completed, use 

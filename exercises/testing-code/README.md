@@ -14,10 +14,11 @@ the complete version in the `solution` subdirectory.
 
 ## Setup
 
-You'll need two terminal windows for this exercise.
+You'll need three terminal windows for this exercise.
 
-1. In all terminals, change to the `exercises/testing-code/practice` directory.
-2. In one terminal, run `npm install` to install dependencies.
+1. In one terminal, run `temporal server start-dev --ui-port 8080 --db-filename clusterdata.db` to start the Temporal server. For more details on this command, please refer to the `Setting up a Local Development Environment` chapter in the course.
+2. In the other terminals, change to the `exercises/testing-code/practice` directory.
+3. In one terminal, run `npm install` to install dependencies.
 
 ## Part A: Running a Test
 

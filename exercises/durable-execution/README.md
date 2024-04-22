@@ -13,13 +13,14 @@ Make your changes to the code in the `practice` subdirectory (look for `TODO` co
 
 You'll need four terminal windows for this exercise.
 
-1. In all terminals, change to the `exercises/durable-execution/practice` directory.
-2. In one terminal, run `npm install` to install dependencies.
+1. In one terminal, run `temporal server start-dev --ui-port 8080 --db-filename clusterdata.db` to start the Temporal server. For more details on this command, please refer to the `Setting up a Local Development Environment` chapter in the course.
+2. In the other terminals, change to the `exercises/durable-execution/practice` directory.
+3. In one terminal, run `npm install` to install dependencies.
 
 ## Part A: Add Logging to the Workflow Code
 
 1. Edit the `src/workflows.ts` file
-2. Add the `log`  package to the `import { proxyActivities } from '@temporalio/workflow';` line.
+2. Add the `log` package to the `import { proxyActivities } from '@temporalio/workflow';` line.
 3. Add a line at the top of the `sayHelloGoodbyeWorkflow` function to log a message at the Info level
    1. It should mention that the Workflow function has been invoked
    2. It should also include a name-value pair for the name passed as input
