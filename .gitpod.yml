@@ -1,3 +1,4 @@
+
 image: gitpod/workspace-full:2023-01-16-03-31-28
 tasks:
   - name: Temporal Local Development Server
@@ -21,7 +22,7 @@ tasks:
       echo "waiting for server...."
       clear
       source .bash_aliases
-      /workspace/bin/temporal server start-dev --db-filename your_temporal.db --ui-port 8080
+      /workspace/bin/temporal server start-dev --dynamic-config-value frontend.workerVersioningDataAPIs=true --dynamic-config-value frontend.workerVersioningWorkflowAPIs=true --dynamic-config-value worker.buildIdScavengerEnabled=true --ui-port 8080 --db-filename $HOME/.cluster-persistence.db
   - name: Worker
     command: |
       gp ports await 7233 && gp ports await 8080 && sleep 25 && gp preview $(gp url 8080)
@@ -36,13 +37,6 @@ tasks:
       clear
       echo "Use this terminal to run workflows..."
     openMode: split-right
-  - name: Microservice
-    command: |
-      source .bash_aliases
-      clear
-      echo "Use this terminal to start the microservice used in various activities."
-    openMode: split-right
-
 
 ports:
   - name: Temporal server
@@ -53,9 +47,9 @@ ports:
     description: New (v2) Temporal Web UI
     onOpen: ignore
     visibility: private
-  - name: Greeting Service
-    description: Local microservice used in exercises
-    port: 9999
+  - name: Codec Server Microservice
+    description: Local Codec Server used in exercises
+    port: 8888
     onOpen: ignore
     visibility: private
 

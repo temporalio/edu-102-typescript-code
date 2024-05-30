@@ -13,9 +13,8 @@ Make your changes to the code in the `practice` subdirectory (look for `TODO` co
 
 You'll need four terminal windows for this exercise.
 
-1. In one terminal, run `temporal server start-dev --ui-port 8080 --db-filename clusterdata.db` to start the Temporal server. For more details on this command, please refer to the `Setting up a Local Development Environment` chapter in the course.
-2. In the other terminals, change to the `exercises/durable-execution/practice` directory.
-3. In one terminal, run `npm install` to install dependencies.
+1. In all terminals, change to the `exercises/durable-execution/practice` directory.
+2. In one terminal, run `npm install` to install dependencies.
 
 ## Part A: Add Logging to the Workflow Code
 
@@ -33,8 +32,7 @@ You'll need four terminal windows for this exercise.
 
 1. Edit the `src/activities.ts` file.
 2. Add an import to the top of the file so you can access the logger: `import * as activity from @temporalio/activity` package.
-3. Define a new `context` variable at the top of the Activity function and assign it `activity.Context.current()` to get access to the logger.
-4. Insert a logging statement using `context.log` at the Info level just after this, so you'll know when the Activity is invoked. 
+3. Insert a logging statement using `log` at the Info level just after this, so you'll know when the Activity is invoked. 
    1. Include the term being translated and the language code as name-value pairs.
 4. Optionally, add log statements at the Error level anywhere that the Activity returns an error.
 5. Near the bottom of the function, use the Debug level to log the successful translation
