@@ -34,6 +34,12 @@ tasks:
       source /workspace/edu-102-typescript-code/.bash.cfg
       clear
       echo "Use this terminal to start your Worker."
+  - name: Worker
+    command: |
+      source /workspace/edu-102-typescript-code/.bash.cfg
+      clear
+      echo "Use this terminal to run another Worker as needed."
+    openMode: split-right
   - name: Terminal
     command: |
       source /workspace/edu-102-typescript-code/.bash.cfg
