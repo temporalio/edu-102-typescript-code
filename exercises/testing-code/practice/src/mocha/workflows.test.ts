@@ -41,8 +41,6 @@ describe('SayHelloGoodbye workflow', () => {
       })
     );
 
-    // TODO: Assert that Workflow Execution completed
-
     // TODO: Assert that the HelloMessage field in the
     //       result is: Bonjour, Pierre
 

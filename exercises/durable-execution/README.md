@@ -11,10 +11,11 @@ Make your changes to the code in the `practice` subdirectory (look for `TODO` co
 
 ## Setup
 
-You'll need four terminal windows for this exercise.
+You'll need five terminal windows for this exercise.
 
-1. In all terminals, change to the `exercises/durable-execution/practice` directory.
-2. In one terminal, run `npm install` to install dependencies.
+1. In one terminal start the Temporal Service with `temporal server start-dev`
+2. In the other terminals, change to the `exercises/durable-execution/practice` directory.
+3. In one terminal, run `npm install` to install dependencies.
 
 ## Part A: Add Logging to the Workflow Code
 
@@ -31,7 +32,7 @@ You'll need four terminal windows for this exercise.
 ## Part B: Add Logging to the Activity Code
 
 1. Edit the `src/activities.ts` file.
-2. Add an import to the top of the file so you can access the logger: `import * as activity from @temporalio/activity` package.
+2. Add an import to the top of the file so you can access the logger: `import * as activity from '@temporalio/activity'` package.
 3. Define a new `context` variable at the top of the Activity function and assign it `activity.Context.current()` to get access to the logger.
 4. Insert a logging statement using `context.log` at the Info level just after this, so you'll know when the Activity is invoked. 
    1. Include the term being translated and the language code as name-value pairs.
@@ -44,7 +45,8 @@ You'll need four terminal windows for this exercise.
 You will now add a Timer between the two Activity calls in the Workflow Definition, which will make it easier to observe durable execution in the next section.
 
 1. After the statement where `helloMessage` is defined, but before the statement where `goodbyeInput` is defined, add a new statement that logs the message `Sleeping between translation calls` at the Debug level.
-2. Just after the new log statement, use `await sleep("10 seconds");` to set a Timer for 10 seconds.
+2. Add the `sleep`  function to the `import { proxyActivities } from '@temporalio/workflow';` line.
+3. Just after the new log statement, use `await sleep("10 seconds");` to set a Timer for 10 seconds.
 
 ## Part D: Observe Durable Execution
 It is typical to run Temporal applications using two or more Worker processes. Not only do additional Workers allow the application to scale, it also increases availability since another Worker can take over if a Worker crashes during Workflow Execution. You'll see this for yourself now and will learn more about how Temporal achieves this as you continue through the course.

@@ -112,23 +112,26 @@ continue with the following steps.
    `cp src/mocha/workflows.test.ts src/mocha/workflows-mocks.test.ts`
 2. Edit the `src/mocha/workflows-mocks.test.ts` file
 3. Add an import for `sinon` with `import sinon from 'sinon';` 
-4. Rename the test function to `it('successfully completes French translation with a mocked call', async () => {`
-5. Make the following changes between where the object representing
+4. Add an import for the Translation Activity input and output
+   `import { TranslationActivityInput, TranslationActivityOutput } from '../shared';`
+5. Rename the test function to `it('successfully completes French translation with a mocked call', async () => {`
+6. Make the following changes between where the object representing
    workflow input is defined and where the Worker is defined:
    * Create and populate an instance of the `TranslationActivityInput`
      object to represent input passed to the Activity when translating 
-     the greeting
+     the greeting. Name it `helloInput`.
    * Create and populate an instance of the `TranslationActivityOutput`
      object to represent output returned by the Activity when translating 
-     the greeting
-   * Repeat the above three steps, this time creating objects for the goodbye message.
+     the greeting. Name it `helloOutput`.
+   * Repeat the above two steps, this time creating objects for the goodbye message.
+     Switch the names from `hello` to `goodbye`.
    * Use Sinon to create a mock that represents the `TranslateTerm` Activity, 
      which will return the output object you created when called 
      with the input object you created:  `const translateTermMock = sinon.stub();`
    * Add the following two lines to return mock results for the translations:
        `translateTermMock.withArgs(helloInput).resolves(helloOutput);`
        `translateTermMock.withArgs(goodbyeInput).resolves(goodbyeOutput);`
-6. For the Worker, modify the registered Activities so it uses your mock:
+7. For the Worker, modify the registered Activities so it uses your mock:
        `activities: { translateTerm: translateTermMock },`
-7. Save your changes
-8. Run `npm test` to run the tests
+8. Save your changes
+9. Run `npm test` to run the tests

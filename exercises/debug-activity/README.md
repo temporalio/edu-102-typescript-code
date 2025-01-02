@@ -1,4 +1,3 @@
-# Exercise 3: Debugging and Fixing an Activity Failure
 During this exercise, you will
 
 * Start a Worker and run a basic Workflow for processing a pizza order
@@ -15,10 +14,11 @@ the complete version in the `solution` subdirectory.
 
 ## Setup
 
-You'll need three terminal windows for this exercise.
+You'll need four terminal windows for this exercise.
 
-1. In all terminals, change to the `exercises/debug-activity/practice` directory
-2. In one terminal, run `npm install` to install dependencies.
+1. In one terminal, start the Temporal Service by running `temporal server start-dev`
+2. In the other terminals, change to the `exercises/debug-activity/practice` directory
+3. In one terminal, run `npm install` to install dependencies.
 
 ## Part A: Run the Workflow
 
@@ -168,7 +168,7 @@ in the Workflow code, rather than in an Activity, since that is typically
 not prone to failure and unlikely to affect whether the Workflow executes 
 in a deterministic manner. This exercise implemented it in the Activity, 
 since you can deploy a fix to Activity code without a risk of causing a 
-non-deterministic error. Later in this course, you'll safely 
+non-deterministic error. As you learned earlier in this course, there are also ways to safely
 deploy changes to Workflow Definitions.
 
 ### This is the end of the exercise.
