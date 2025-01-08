@@ -14,11 +14,10 @@ the complete version in the `solution` subdirectory.
 
 ## Setup
 
-You'll need four terminal windows for this exercise.
+You'll need three terminal windows for this exercise.
 
-1. In one terminal, start the Temporal Service by running `temporal server start-dev`
-2. In the other terminals, change to the `exercises/debug-activity/practice` directory
-3. In one terminal, run `npm install` to install dependencies.
+1. In all terminals, change to the `exercises/debug-activity/practice` directory
+2. In one terminal, run `npm install` to install dependencies.
 
 ## Part A: Run the Workflow
 

@@ -11,11 +11,10 @@ Make your changes to the code in the `practice` subdirectory (look for `TODO` co
 
 ## Setup
 
-You'll need five terminal windows for this exercise.
+You'll need four terminal windows for this exercise.
 
-1. In one terminal start the Temporal Service with `temporal server start-dev`
-2. In the other terminals, change to the `exercises/durable-execution/practice` directory.
-3. In one terminal, run `npm install` to install dependencies.
+1. In all terminals, change to the `exercises/durable-execution/practice` directory.
+2. In one terminal, run `npm install` to install dependencies.
 
 ## Part A: Add Logging to the Workflow Code
 
