@@ -37,7 +37,7 @@ describe('activities', () => {
       customerID: 12983,
       orderNumber: 'PI314',
       description: '2 large cheese pizzas',
-      amount: 2600,
+      amount: 2600, // does not qualify for a discount
     };
     const confirmation: OrderConfirmation = await env.run(activities.sendBill, input);
     assert.equal(confirmation.orderNumber, input.orderNumber);

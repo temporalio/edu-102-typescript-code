@@ -168,7 +168,7 @@ in the Workflow code, rather than in an Activity, since that is typically
 not prone to failure and unlikely to affect whether the Workflow executes 
 in a deterministic manner. This exercise implemented it in the Activity, 
 since you can deploy a fix to Activity code without a risk of causing a 
-non-deterministic error. Later in this course, you'll safely 
+non-deterministic error. As you learned earlier in this course, there are also ways to safely
 deploy changes to Workflow Definitions.
 
 ### This is the end of the exercise.
