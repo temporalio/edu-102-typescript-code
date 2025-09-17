@@ -46,7 +46,7 @@ const translations: Record<string, Record<string, string>> = {
   sk: {
     hello: 'ahoj',
     goodbye: 'zbohom',
-    thanks: 'ďakujem koe',
+    thanks: 'ďakujem',
   },
   tr: {
     hello: 'merhaba',
